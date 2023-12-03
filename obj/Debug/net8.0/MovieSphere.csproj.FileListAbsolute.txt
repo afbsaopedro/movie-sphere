@@ -130,3 +130,4 @@
 /home/afbsaopedro/workspace/MovieSphere/obj/Debug/net8.0/MovieSphere.pdb
 /home/afbsaopedro/workspace/MovieSphere/obj/Debug/net8.0/MovieSphere.genruntimeconfig.cache
 /home/afbsaopedro/workspace/MovieSphere/obj/Debug/net8.0/ref/MovieSphere.dll
+/home/afbsaopedro/workspace/MovieSphere/obj/Debug/net8.0/MovieSphere.sourcelink.json
