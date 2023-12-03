@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
 namespace MovieSphere.Models;
@@ -16,4 +17,7 @@ public class ApplicationUser : IdentityUser
     //NavigationProperties
     public ICollection<Movie> FavouriteMovies { get; set; }
     public ICollection<Movie> Watchlist { get; set; }
+    [ForeignKey("Course")]
+    public Guid CourseId { get; set; }
+    public Course Course { get; set; }
 }

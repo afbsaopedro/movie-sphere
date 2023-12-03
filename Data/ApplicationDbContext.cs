@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     public DbSet<Movie> Movies { get; set; }
+    public DbSet<Course> Courses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -24,6 +25,11 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             .HasMany(au => au.Watchlist)
             .WithMany(m => m.UsersInWatchlist)
             .UsingEntity(j => j.ToTable("UserWatchlist"));
+
+        modelBuilder.Entity<ApplicationUser>()
+            .HasOne(au => au.Course)
+            .WithMany(c => c.UsersInCourse)
+            .HasForeignKey(au => au.CourseId);
         
         base.OnModelCreating(modelBuilder);
     }
