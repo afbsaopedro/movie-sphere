@@ -10,26 +10,16 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         : base(options)
     {
     }
+    
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-    public DbSet<Movie> Movies { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     public DbSet<Course> Courses { get; set; }
+    public DbSet<Movie> Movies { get; set; }
+    public DbSet<Rating> Ratings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ApplicationUser>()
-            .HasMany(au => au.FavouriteMovies)
-            .WithMany(m => m.UsersWhoFavourited)
-            .UsingEntity(j => j.ToTable("UserFavouriteMovies"));
-
-        modelBuilder.Entity<ApplicationUser>()
-            .HasMany(au => au.Watchlist)
-            .WithMany(m => m.UsersInWatchlist)
-            .UsingEntity(j => j.ToTable("UserWatchlist"));
-
-        modelBuilder.Entity<ApplicationUser>()
-            .HasOne(au => au.Course)
-            .WithMany(c => c.UsersInCourse)
-            .HasForeignKey(au => au.CourseId);
+        //modelBuilders go here MISSING !!!!!
         
         base.OnModelCreating(modelBuilder);
     }

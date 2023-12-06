@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MovieSphere")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6d11afe5fa15044befac9a2732cbaa76a7e8eb31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c33f302e60c99c7a19dbd5ee296b6ff95f66238f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MovieSphere")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MovieSphere")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
