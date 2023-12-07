@@ -37,11 +37,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
         modelBuilder.Entity<Movie>()
             .HasMany(m => m.UsersWhoFavourited)
-            .WithMany(u => u.FavouriteMovies);
+            .WithMany(u => u.FavouriteMovies)
+            .UsingEntity(join => join.ToTable("UsersFavourites"));
 
         modelBuilder.Entity<Movie>()
             .HasMany(m => m.UsersInWatchlist)
-            .WithMany(u => u.Watchlist);
+            .WithMany(u => u.Watchlist)
+            .UsingEntity(join => join.ToTable("UsersWatchlist"));
 
         modelBuilder.Entity<Movie>()
             .HasMany(m => m.Ratings)
@@ -70,11 +72,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
         modelBuilder.Entity<ApplicationUser>()
             .HasMany(u => u.FavouriteMovies)
-            .WithMany(m => m.UsersWhoFavourited);
+            .WithMany(m => m.UsersWhoFavourited)
+            .UsingEntity(join => join.ToTable("UsersFavourites"));
 
         modelBuilder.Entity<ApplicationUser>()
             .HasMany(u => u.Watchlist)
-            .WithMany(m => m.UsersInWatchlist);
+            .WithMany(m => m.UsersInWatchlist)
+            .UsingEntity(join => join.ToTable("UsersWatchlist"));
 
         modelBuilder.Entity<ApplicationUser>()
             .HasMany(u => u.Ratings)
@@ -88,11 +92,13 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
         modelBuilder.Entity<ApplicationUser>()
             .HasMany(u => u.Roles)
-            .WithMany(r => r.UsersWithRole);
+            .WithMany(r => r.UsersWithRole)
+            .UsingEntity(join => join.ToTable("UserRoles"));
 
         modelBuilder.Entity<Role>()
             .HasMany(r => r.UsersWithRole)
-            .WithMany(u => u.Roles);
+            .WithMany(u => u.Roles)
+            .UsingEntity(join => join.ToTable("UserRoles"));
             
         base.OnModelCreating(modelBuilder);
     }
