@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xLLRMUPD+R8I0ntE5X7+GLX6rbsBtNranbKkALPa3ahQeOG6rRoZZSP3cfW3wcDt7WnXpJ9rPYd0lT1aLgoQiQ==",
+  "dgSpecHash": "68nSIsTrGM0C7vNB5Lf74zJF9jn8AIbGKlfTOUyAIK0ikcZm3tOa/W3EmvRYtCUIXfaBfmMkK7zFHMTNMUDbew==",
   "success": true,
-  "projectFilePath": "/home/afbsaopedro/workspace/MovieSphere/MovieSphere.csproj",
+  "projectFilePath": "/home/afbsaopedro/workspace/movie-sphere/MovieSphere.csproj",
   "expectedPackageFiles": [
     "/home/afbsaopedro/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/afbsaopedro/.nuget/packages/microsoft.aspnetcore.cryptography.internal/8.0.0/microsoft.aspnetcore.cryptography.internal.8.0.0.nupkg.sha512",

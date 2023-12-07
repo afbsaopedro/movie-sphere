@@ -13,6 +13,9 @@ public class ApplicationUser : IdentityUser
     public string? Bio { get; set; }
     public bool IsPrivate { get; set; }
     
+    //ForeignKeys
+    public Guid CourseId { get; set; }
+    
     //NavigationProperties
     public ICollection<Movie>? FavouriteMovies { get; set; }
     public ICollection<Movie>? Watchlist { get; set; }

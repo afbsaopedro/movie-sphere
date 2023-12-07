@@ -3015,11 +3015,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/afbsaopedro/workspace/MovieSphere/MovieSphere.csproj",
+      "projectUniqueName": "/home/afbsaopedro/workspace/movie-sphere/MovieSphere.csproj",
       "projectName": "MovieSphere",
-      "projectPath": "/home/afbsaopedro/workspace/MovieSphere/MovieSphere.csproj",
+      "projectPath": "/home/afbsaopedro/workspace/movie-sphere/MovieSphere.csproj",
       "packagesPath": "/home/afbsaopedro/.nuget/packages/",
-      "outputPath": "/home/afbsaopedro/workspace/MovieSphere/obj/",
+      "outputPath": "/home/afbsaopedro/workspace/movie-sphere/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/afbsaopedro/.nuget/NuGet/NuGet.Config"
