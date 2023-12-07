@@ -22,5 +22,7 @@ public class ApplicationUser : IdentityUser
     public ICollection<Rating>? Ratings { get; set; }
     public ICollection<Comment>? Comments { get; set; }
     public Course? Course { get; set; }
+    
+    public ICollection<Role> Roles { get; set; }
 
 }

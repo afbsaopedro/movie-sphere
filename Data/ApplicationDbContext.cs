@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     }
     
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+    public DbSet<Role> Roles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Movie> Movies { get; set; }
@@ -84,6 +85,14 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             .HasMany(u => u.Comments)
             .WithOne(c => c.User)
             .HasForeignKey(c => c.UserId);
+
+        modelBuilder.Entity<ApplicationUser>()
+            .HasMany(u => u.Roles)
+            .WithMany(r => r.UsersWithRole);
+
+        modelBuilder.Entity<Role>()
+            .HasMany(r => r.UsersWithRole)
+            .WithMany(u => u.Roles);
             
         base.OnModelCreating(modelBuilder);
     }
