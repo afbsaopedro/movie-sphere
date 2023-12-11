@@ -11,7 +11,7 @@ public class Course
     [DisplayName("Name")]
     public string? Name { get; set; }
     
-    [DisplayName("Tag")]
+    [DisplayName("Course Tag")]
     public string? Tag { get; set; }
 
     //NavigationProperties
