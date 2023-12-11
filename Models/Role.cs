@@ -1,10 +1,13 @@
+using System.ComponentModel;
 using Microsoft.AspNetCore.Identity;
 
 namespace MovieSphere.Models;
 
 public class Role : IdentityRole
 {
-    public string Tag { get; set; }
+    [DisplayName("Role Tag")]
+    public string? Tag { get; set; }
     
-    public ICollection<ApplicationUser> UsersWithRole { get; set; }
+    [DisplayName("Users with role")]
+    public ICollection<ApplicationUser>? UsersWithRole { get; set; }
 }

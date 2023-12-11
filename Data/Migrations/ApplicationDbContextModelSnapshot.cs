@@ -218,13 +218,13 @@ namespace MovieSphere.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("CourseId")
+                    b.Property<Guid?>("CourseId")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreationDate")
+                    b.Property<DateTime?>("CreationDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("DateOfBirth")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -237,7 +237,7 @@ namespace MovieSphere.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsPrivate")
+                    b.Property<bool?>("IsPrivate")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LastName")
@@ -295,14 +295,14 @@ namespace MovieSphere.Data.Migrations
 
             modelBuilder.Entity("MovieSphere.Models.Comment", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Content")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("MovieId")
+                    b.Property<Guid?>("MovieId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
@@ -319,14 +319,14 @@ namespace MovieSphere.Data.Migrations
 
             modelBuilder.Entity("MovieSphere.Models.Course", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Tag")
+                    b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Tag")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -336,11 +336,11 @@ namespace MovieSphere.Data.Migrations
 
             modelBuilder.Entity("MovieSphere.Models.Movie", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("ReleaseYear")
+                    b.Property<DateTime?>("ReleaseYear")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Title")
@@ -353,14 +353,14 @@ namespace MovieSphere.Data.Migrations
 
             modelBuilder.Entity("MovieSphere.Models.Rating", b =>
                 {
-                    b.Property<int>("RatingId")
+                    b.Property<Guid?>("RatingId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<Guid>("MovieId")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Score")
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("Score")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("UserId")
@@ -380,7 +380,6 @@ namespace MovieSphere.Data.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
                     b.Property<string>("Tag")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasDiscriminator().HasValue("Role");
@@ -486,9 +485,7 @@ namespace MovieSphere.Data.Migrations
                 {
                     b.HasOne("MovieSphere.Models.Course", "Course")
                         .WithMany("UsersInCourse")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
 
                     b.Navigation("Course");
                 });
@@ -497,9 +494,7 @@ namespace MovieSphere.Data.Migrations
                 {
                     b.HasOne("MovieSphere.Models.Movie", "Movie")
                         .WithMany("Comments")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MovieId");
 
                     b.HasOne("MovieSphere.Models.ApplicationUser", "User")
                         .WithMany("Comments")
@@ -514,9 +509,7 @@ namespace MovieSphere.Data.Migrations
                 {
                     b.HasOne("MovieSphere.Models.Movie", "Movie")
                         .WithMany("Ratings")
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MovieId");
 
                     b.HasOne("MovieSphere.Models.ApplicationUser", "User")
                         .WithMany("Ratings")

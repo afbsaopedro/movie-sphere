@@ -1,13 +1,20 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieSphere.Models;
 
 public class Course
 {
-    public Guid Id { get; set; }
-    public string? Title { get; set; }
+    [DisplayName("ID")]
+    public Guid? Id { get; set; }
+    
+    [DisplayName("Name")]
+    public string? Name { get; set; }
+    
+    [DisplayName("Tag")]
     public string? Tag { get; set; }
 
     //NavigationProperties
+    [DisplayName("Users in Course")]
     public ICollection<ApplicationUser>? UsersInCourse { get; set; }
 }

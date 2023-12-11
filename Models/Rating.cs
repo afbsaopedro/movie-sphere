@@ -1,15 +1,26 @@
+using System.ComponentModel;
+
 namespace MovieSphere.Models;
 
 public class Rating
 {
-    public int RatingId { get; set; }
-    public int Score { get; set; }
+    [DisplayName("ID")]
+    public Guid? RatingId { get; set; }
+    
+    [DisplayName("Rating Score")]
+    public int? Score { get; set; }
 
     //ForeignKeys
-    public Guid MovieId { get; set; }
+    [DisplayName("Movie ID")]
+    public Guid? MovieId { get; set; }
+    
+    [DisplayName("User ID")]
     public string? UserId { get; set; }
 
     //NavigationProperties
+    [DisplayName("Movie")]
     public Movie? Movie { get; set; }
+    
+    [DisplayName("User")]
     public ApplicationUser? User { get; set; }
 }
