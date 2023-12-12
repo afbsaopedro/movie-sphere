@@ -12,7 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser> //DbConte
     }
     
     public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-    public DbSet<Role> Roles { get; set; }
+    // public DbSet<Role> Roles { get; set; }
     public DbSet<Comment> Comments { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Movie> Movies { get; set; }
@@ -90,15 +90,15 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser> //DbConte
             .WithOne(c => c.User)
             .HasForeignKey(c => c.UserId);
 
-        modelBuilder.Entity<ApplicationUser>()
-            .HasMany(u => u.Roles)
-            .WithMany(r => r.UsersWithRole)
-            .UsingEntity(join => join.ToTable("UserRoles"));
-
-        modelBuilder.Entity<Role>()
-            .HasMany(r => r.UsersWithRole)
-            .WithMany(u => u.Roles)
-            .UsingEntity(join => join.ToTable("UserRoles"));
+        // modelBuilder.Entity<ApplicationUser>()
+        //     .HasMany(u => u.Roles)
+        //     .WithMany(r => r.UsersWithRole)
+        //     .UsingEntity(join => join.ToTable("UserRoles"));
+        //
+        // modelBuilder.Entity<Role>()
+        //     .HasMany(r => r.UsersWithRole)
+        //     .WithMany(u => u.Roles)
+        //     .UsingEntity(join => join.ToTable("UserRoles"));
             
         base.OnModelCreating(modelBuilder);
     }
