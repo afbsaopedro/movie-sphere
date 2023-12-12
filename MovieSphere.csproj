@@ -22,4 +22,18 @@
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\ApplicationUser\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ApplicationUser\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ApplicationUser\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ApplicationUser\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\ApplicationUser\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Dashboard\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Movie\Create.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Movie\Delete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Movie\Details.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Movie\Edit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Movie\Index.cshtml" />
+    </ItemGroup>
+
 </Project>
