@@ -4,7 +4,7 @@ using MovieSphere.Models;
 
 namespace MovieSphere.Data;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser> //DbContext used in the video
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
