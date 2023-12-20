@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore": "8.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.0",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.0"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.0",
+          "MovieSphereDataAccess": "1.0.0"
         },
         "runtime": {
           "MovieSphere.dll": {}
@@ -1913,6 +1914,27 @@
             "fileVersion": "7.0.22.51805"
           }
         }
+      },
+      "MovieSphereDataAccess/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
+          "MovieSphereModels": "1.0.0",
+          "MovieSphereUtility": "1.0.0"
+        },
+        "runtime": {
+          "MovieSphereDataAccess.dll": {}
+        }
+      },
+      "MovieSphereModels/1.0.0": {
+        "runtime": {
+          "MovieSphereModels.dll": {}
+        }
+      },
+      "MovieSphereUtility/1.0.0": {
+        "runtime": {
+          "MovieSphereUtility.dll": {}
+        }
       }
     }
   },
@@ -3083,6 +3105,21 @@
       "sha512": "sha512-bR4qdCmssMMbo9Fatci49An5B1UaVJZHKNq70PRgzoLYIlitb8Tj7ns/Xt5Pz1CkERiTjcVBDU2y1AVrPBYkaw==",
       "path": "system.windows.extensions/7.0.0",
       "hashPath": "system.windows.extensions.7.0.0.nupkg.sha512"
+    },
+    "MovieSphereDataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieSphereModels/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MovieSphereUtility/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -1,0 +1,12 @@
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.AssemblyInfoInputs.cache
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.AssemblyInfo.cs
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.csproj.CoreCompileInputs.cache
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.sourcelink.json
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\bin\Debug\net8.0\MovieSphereModels.deps.json
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\bin\Debug\net8.0\MovieSphereModels.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\bin\Debug\net8.0\MovieSphereModels.pdb
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\refint\MovieSphereModels.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\MovieSphereModels.pdb
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphereModels\obj\Debug\net8.0\ref\MovieSphereModels.dll

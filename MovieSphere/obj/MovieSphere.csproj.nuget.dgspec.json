@@ -4,6 +4,194 @@
     "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphere\\MovieSphere.csproj": {}
   },
   "projects": {
+    "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj",
+        "projectName": "MovieSphereDataAccess",
+        "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj",
+        "packagesPath": "C:\\Users\\afbsaopedro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\afbsaopedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereModels\\MovieSphereModels.csproj": {
+                "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereModels\\MovieSphereModels.csproj"
+              },
+              "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereUtility\\MovieSphereUtility.csproj": {
+                "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereUtility\\MovieSphereUtility.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereModels\\MovieSphereModels.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereModels\\MovieSphereModels.csproj",
+        "projectName": "MovieSphereModels",
+        "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereModels\\MovieSphereModels.csproj",
+        "packagesPath": "C:\\Users\\afbsaopedro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereModels\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\afbsaopedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereUtility\\MovieSphereUtility.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereUtility\\MovieSphereUtility.csproj",
+        "projectName": "MovieSphereUtility",
+        "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereUtility\\MovieSphereUtility.csproj",
+        "packagesPath": "C:\\Users\\afbsaopedro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereUtility\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\afbsaopedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphere\\MovieSphere.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -27,7 +215,11 @@
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj": {
+                "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

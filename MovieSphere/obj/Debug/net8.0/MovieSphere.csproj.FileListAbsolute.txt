@@ -284,3 +284,9 @@ C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\runtimes\
 C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\MovieSphereDataAccess.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\MovieSphereModels.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\MovieSphereUtility.dll
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\MovieSphereDataAccess.pdb
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\MovieSphereModels.pdb
+C:\Users\afbsaopedro\Desktop\movie-sphere\MovieSphere\bin\Debug\net8.0\MovieSphereUtility.pdb

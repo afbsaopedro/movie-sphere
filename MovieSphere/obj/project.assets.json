@@ -2875,6 +2875,42 @@
             "rid": "win"
           }
         }
+      },
+      "MovieSphereDataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.0",
+          "MovieSphereModels": "1.0.0",
+          "MovieSphereUtility": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MovieSphereDataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieSphereDataAccess.dll": {}
+        }
+      },
+      "MovieSphereModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MovieSphereModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieSphereModels.dll": {}
+        }
+      },
+      "MovieSphereUtility/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/MovieSphereUtility.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MovieSphereUtility.dll": {}
+        }
       }
     }
   },
@@ -7982,6 +8018,21 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "MovieSphereDataAccess/1.0.0": {
+      "type": "project",
+      "path": "../MovieSphereDataAccess/MovieSphereDataAccess.csproj",
+      "msbuildProject": "../MovieSphereDataAccess/MovieSphereDataAccess.csproj"
+    },
+    "MovieSphereModels/1.0.0": {
+      "type": "project",
+      "path": "../MovieSphereModels/MovieSphereModels.csproj",
+      "msbuildProject": "../MovieSphereModels/MovieSphereModels.csproj"
+    },
+    "MovieSphereUtility/1.0.0": {
+      "type": "project",
+      "path": "../MovieSphereUtility/MovieSphereUtility.csproj",
+      "msbuildProject": "../MovieSphereUtility/MovieSphereUtility.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7990,7 +8041,8 @@
       "Microsoft.EntityFrameworkCore >= 8.0.0",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.0",
+      "MovieSphereDataAccess >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -8019,7 +8071,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj": {
+              "projectPath": "C:\\Users\\afbsaopedro\\Desktop\\movie-sphere\\MovieSphereDataAccess\\MovieSphereDataAccess.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

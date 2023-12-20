@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieSphere.Data;
-using MovieSphere.Models;
+using MovieSphereDataAccess.Data;
+using MovieSphereModels.Models;
 
 namespace MovieSphere.Controllers
 {
