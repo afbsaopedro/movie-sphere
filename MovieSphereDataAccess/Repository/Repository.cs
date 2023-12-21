@@ -10,7 +10,7 @@ using MovieSphereDataAccess.Repository.IRepository;
 
 namespace MovieSphereDataAccess.Repository
 {
-    internal class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _db;
 
@@ -19,8 +19,8 @@ namespace MovieSphereDataAccess.Repository
         public Repository(ApplicationDbContext db)
         {
             _db = db;
-            this.dbSet = db.Set<T>();
-            // _db.Courses == DbSet
+            this.dbSet = _db.Set<T>();
+            //_db.Courses == dbSet
         }
 
         public void Add(T entity)
