@@ -1,21 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieSphereDataAccess.Data;
 using MovieSphereModels.Models;
+using MovieSphereDataAccess.Repository.IRepository;
 
 namespace MovieSphere.Controllers
 {
     public class CourseController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CourseController(ApplicationDbContext db)
+        private readonly ICourseRepository _courseRepository;
+        public CourseController(ICourseRepository db)
         {
-            _db = db;
+            _courseRepository = db;
         }
 
         // Index Actions
         public IActionResult Index()
         {
-            List<Course> objCourseList = _db.Courses.ToList();
+            List<Course> objCourseList = _courseRepository.GetAll().ToList();
             return View(objCourseList);
         }
 
@@ -43,8 +44,8 @@ namespace MovieSphere.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Courses.Add(obj);
-                _db.SaveChanges();
+                _courseRepository.Add(obj);
+                _courseRepository.Save();
                 TempData["success"] = "Course created successfully";
                 return RedirectToAction("Index");
             }
@@ -62,7 +63,7 @@ namespace MovieSphere.Controllers
 
             // Several ways to find and retrieve what you want from the database
             //
-            Course CourseFromDb = _db.Courses.FirstOrDefault(c => c.Id == Id);
+            Course CourseFromDb = _courseRepository.Get(c => c.Id == Id);
             //Course CourseFromDb = _db.Courses.Find(Id);
             //Course CourseFromDb = _db.Courses.Where(c=>c.Id==Id).FirstOrDefault();
             
@@ -81,8 +82,8 @@ namespace MovieSphere.Controllers
 
             if (ModelState.IsValid)
             {
-                _db.Courses.Update(obj);
-                _db.SaveChanges();
+                _courseRepository.Update(obj);
+                _courseRepository.Save();
                 TempData["success"] = "Course updated successfully";
                 return RedirectToAction("Index");
             }
@@ -100,7 +101,7 @@ namespace MovieSphere.Controllers
                 return NotFound();
             }
 
-            Course CourseFromDb = _db.Courses.FirstOrDefault(c => c.Id == Id);
+            Course CourseFromDb = _courseRepository.Get(c => c.Id == Id);
 
             if (CourseFromDb == null)
             {
@@ -113,15 +114,16 @@ namespace MovieSphere.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? Id)
         {
-            Course obj = _db.Courses.FirstOrDefault(c=>c.Id == Id);
+            Course obj = _courseRepository.Get(c => c.Id == Id);
 
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _db.Courses.Remove(obj);
-            _db.SaveChanges();
+            _courseRepository.Remove(obj);
+            _courseRepository.Save();
+
             TempData["success"] = "Course deleted successfully";
             return RedirectToAction("Index");
         }
