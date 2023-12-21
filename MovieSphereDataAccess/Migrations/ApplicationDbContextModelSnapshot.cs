@@ -232,6 +232,10 @@ namespace MovieSphereDataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ReleaseYear")
                         .HasColumnType("int");
 
@@ -248,6 +252,7 @@ namespace MovieSphereDataAccess.Migrations
                         {
                             Id = 1,
                             Description = "The world forever changes. The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+                            ImageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
                             ReleaseYear = 2023,
                             Title = "Oppenheimer"
                         },
@@ -255,6 +260,7 @@ namespace MovieSphereDataAccess.Migrations
                         {
                             Id = 2,
                             Description = "She's everything. He's just Ken. Barbie and Ken are having the time of their lives in the colorful and seemingly perfect world of Barbie Land. However, when they get a chance to go to the real world, they soon discover the joys and perils of living among humans.",
+                            ImageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
                             ReleaseYear = 2023,
                             Title = "Barbie"
                         },
@@ -262,6 +268,7 @@ namespace MovieSphereDataAccess.Migrations
                         {
                             Id = 3,
                             Description = "The One Name They All Fear. Famed monster slayer Gabriel Van Helsing is dispatched to Transylvania to assist the last of the Valerious bloodline in defeating Count Dracula. Anna Valerious reveals that Dracula has formed an unholy alliance with Dr. Frankenstein's monster and is hell-bent on exacting a centuries-old curse on her family.",
+                            ImageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
                             ReleaseYear = 2004,
                             Title = "Van Helsing"
                         },
@@ -269,6 +276,7 @@ namespace MovieSphereDataAccess.Migrations
                         {
                             Id = 4,
                             Description = "The legend you know. The adventure you have yet to imagine. Dashing legionnaire Rick O'Connell stumbles upon the hidden ruins of Hamunaptra while in the midst of a battle to claim the area in 1920s Egypt. It has been over three thousand years since former High Priest Imhotep suffered a fate worse than death as a punishment for a forbidden love—along with a curse that guarantees eternal doom upon the world if he is ever awoken.",
+                            ImageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
                             ReleaseYear = 1999,
                             Title = "The Mummy"
                         },
@@ -276,6 +284,7 @@ namespace MovieSphereDataAccess.Migrations
                         {
                             Id = 5,
                             Description = "The most powerful force on earth is about to be unleashed by the two people who should know better. Rick and Evelyn O’Connell, along with their 8-year-old son Alex, discover the key to the legendary Scorpion King’s might: the fabled Bracelet of Anubis. Unfortunately, a newly resurrected Imhotep has designs on the bracelet as well, and isn’t above kidnapping its new bearer, Alex, to gain control of Anubis’s otherworldly army.",
+                            ImageUrl = "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
                             ReleaseYear = 2001,
                             Title = "The Mummy Returns"
                         });

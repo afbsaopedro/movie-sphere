@@ -16,6 +16,8 @@ public class Movie
 
     public string Description { get; set; }
 
+    public string ImageUrl {  get; set; }
+
     //NavigationProperties
     [NotMapped]
     public ICollection<ApplicationUser>? UsersWhoFavourited { get; set; }
