@@ -13,11 +13,13 @@ namespace MovieSphereDataAccess.Repository
         private ApplicationDbContext _db;
 
         public ICourseRepository Course { get; private set; }
+        public IMovieRepository Movie { get; private set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Course = new CourseRepository(_db);
+            Movie = new MovieRepository(_db);
         }
 
         

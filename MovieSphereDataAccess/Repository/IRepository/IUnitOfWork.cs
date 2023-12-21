@@ -9,6 +9,7 @@ namespace MovieSphereDataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         ICourseRepository Course { get; }
+        IMovieRepository Movie { get; }
 
         void Save();
     }
