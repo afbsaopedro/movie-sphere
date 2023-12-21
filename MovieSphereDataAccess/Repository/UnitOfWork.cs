@@ -1,28 +1,30 @@
 ﻿using MovieSphereDataAccess.Data;
 using MovieSphereDataAccess.Repository.IRepository;
-using MovieSphereModels.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MovieSphereDataAccess.Repository
 {
-    public class CourseRepository : Repository<Course>, ICourseRepository
+    public class UnitOfWork : IUnitOfWork
     {
         private ApplicationDbContext _db;
 
-        public CourseRepository(ApplicationDbContext db) : base(db)
+        public ICourseRepository Course { get; private set; }
+
+        public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
+            Course = new CourseRepository(_db);
         }
 
-        public void Update(Course obj)
+        
+
+        public void Save()
         {
-            _db.Courses.Update(obj);
+            _db.SaveChanges();
         }
     }
 }
