@@ -1,7 +1,6 @@
 # Movie Sphere
 Final Project for Web Programming Class
 
-Video Reference: https://www.youtube.com/watch?v=AopeJjkcRvU
-
-Notes:
-- if migratinos dont work, on the package manager console, check on what project it is running
+Video References:
+- https://www.youtube.com/watch?v=AopeJjkcRvU
+- https://www.youtube.com/watch?v=THKTQKrg4a4&list=PL82C6-O4XrHde_urqhKJHH-HTUfTK6siO&index=12
