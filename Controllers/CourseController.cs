@@ -72,7 +72,7 @@ namespace MovieSphere.Controllers
 
                 return RedirectToAction(nameof(Details), new {id = newCourse.Id});
             }
-            ViewData["CourseTypeId"] = new SelectList(_applicationDbContext.CourseTypes, "Id", "Id", collection["CourseTypeId"]);
+            ViewData["CourseTypeId"] = new SelectList(_applicationDbContext.CourseTypes, "Id", "Type");
             return RedirectToAction(nameof(Index));
         }
 
