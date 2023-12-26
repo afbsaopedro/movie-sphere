@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MovieSphere.Data;
 using MovieSphere.Models;
@@ -12,146 +8,153 @@ namespace MovieSphere.Controllers
 {
     public class CourseTypeController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _applicationDbContext;
 
-        public CourseTypeController(ApplicationDbContext context)
+        public CourseTypeController(ApplicationDbContext applicationDbContext)
         {
-            _context = context;
+            _applicationDbContext = applicationDbContext;
         }
 
-        // GET: CourseType
-        public async Task<IActionResult> Index()
+        // GET: CourseTypeController
+        public ActionResult Index()
         {
-            return View(await _context.CourseTypes.ToListAsync());
+            var data = _applicationDbContext.CourseTypes.ToList();
+            return View(data);
         }
 
-        // GET: CourseType/Details/5
-        public async Task<IActionResult> Details(int? id)
+        // GET: CourseTypeController/Details/5
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var courseType = await _context.CourseTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (courseType == null)
+            var item = _applicationDbContext.CourseTypes.FirstOrDefault(ct => ct.Id == id);
+
+            if (item == null)
             {
                 return NotFound();
             }
 
-            return View(courseType);
+            return View(item);
         }
 
-        // GET: CourseType/Create
-        public IActionResult Create()
+        // GET: CourseTypeController/Create
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: CourseType/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CourseTypeController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Type")] CourseType courseType)
+        public ActionResult Create(IFormCollection collection)
         {
-            if (ModelState.IsValid)
+            try
             {
-                _context.Add(courseType);
-                await _context.SaveChangesAsync();
+                if (ModelState.IsValid)
+                {
+                    CourseType newCourseType = new CourseType();
+
+                    newCourseType.Type = collection["Type"];
+
+                    _applicationDbContext.CourseTypes.Add(newCourseType);
+                    _applicationDbContext.SaveChanges();
+                    return RedirectToAction(nameof(Details), new { id = newCourseType.Id });
+                }
                 return RedirectToAction(nameof(Index));
             }
-            return View(courseType);
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: CourseType/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        // GET: CourseTypeController/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var courseType = await _context.CourseTypes.FindAsync(id);
-            if (courseType == null)
+            var item = _applicationDbContext.CourseTypes.FirstOrDefault(ct => ct.Id == id);
+
+            if (item == null)
             {
                 return NotFound();
             }
-            return View(courseType);
+
+            return View(item);
         }
 
-        // POST: CourseType/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CourseTypeController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Type")] CourseType courseType)
+        public ActionResult Edit(int id, IFormCollection collection)
         {
+            CourseType courseType = new CourseType();
+            courseType.Id = int.Parse(collection["Id"]);
+            courseType.Type = collection["Type"];
+
             if (id != courseType.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            try
             {
-                try
+                if (ModelState.IsValid)
                 {
-                    _context.Update(courseType);
-                    await _context.SaveChangesAsync();
+                    _applicationDbContext.Update(courseType);
+                    _applicationDbContext.SaveChanges();
+
+                    return RedirectToAction(nameof(Details), new { id = courseType.Id });
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!CourseTypeExists(courseType.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(courseType);
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: CourseType/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        // GET: CourseTypeController/Delete/5
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var courseType = await _context.CourseTypes
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var item = _applicationDbContext.CourseTypes.FirstOrDefault(ct => ct.Id == id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
+        }
+
+        // POST: CourseTypeController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, IFormCollection collection)
+        {
+            var courseType = _applicationDbContext.CourseTypes.FirstOrDefault(e => e.Id == id);
+
             if (courseType == null)
             {
                 return NotFound();
             }
 
-            return View(courseType);
-        }
+            _applicationDbContext.CourseTypes.Remove(courseType);
+            _applicationDbContext.SaveChanges();
 
-        // POST: CourseType/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var courseType = await _context.CourseTypes.FindAsync(id);
-            if (courseType != null)
-            {
-                _context.CourseTypes.Remove(courseType);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool CourseTypeExists(int id)
-        {
-            return _context.CourseTypes.Any(e => e.Id == id);
+                return RedirectToAction(nameof(Index)); 
         }
     }
 }
