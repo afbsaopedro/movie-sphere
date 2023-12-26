@@ -67,12 +67,14 @@ namespace MovieSphere.Controllers
                 newCourse.Tag = collection["Tag"];
                 newCourse.CourseTypeId = int.Parse(collection["CourseTypeId"]);
 
+                ViewData["CourseTypeId"] = new SelectList(_applicationDbContext.CourseTypes, "Id", "Type", newCourse.CourseTypeId);
+
                 _applicationDbContext.Courses.Add(newCourse);
                 _applicationDbContext.SaveChanges();
 
                 return RedirectToAction(nameof(Details), new {id = newCourse.Id});
             }
-            ViewData["CourseTypeId"] = new SelectList(_applicationDbContext.CourseTypes, "Id", "Type");
+            
             return RedirectToAction(nameof(Index));
         }
 
