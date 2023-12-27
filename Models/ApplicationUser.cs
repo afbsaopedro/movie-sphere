@@ -6,16 +6,17 @@ namespace MovieSphere.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public DateTime CreationDate { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string PlaceOfOrigin { get; set; }
+        public string? DisplayName { get; set; }
+        public DateTime? CreationDate { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public string? PlaceOfOrigin { get; set; }
         public string? Bio { get; set; }
-        public bool IsPrivate { get; set; }
+        public bool? IsPrivate { get; set; }
 
         //ForeignKeys
-        public int CourseId { get; set; }
+        public int? CourseId { get; set; }
 
         //NavigationProperties
         public ICollection<Movie>? FavouriteMovies { get; set; }
@@ -24,6 +25,6 @@ namespace MovieSphere.Models
         public ICollection<Comment>? Comments { get; set; }
 
         [ForeignKey("CourseId")]
-        public Course Course { get; set; }
+        public Course? Course { get; set; }
     }
 }
