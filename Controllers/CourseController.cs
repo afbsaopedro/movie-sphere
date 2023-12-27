@@ -11,7 +11,7 @@ using MovieSphere.Models;
 
 namespace MovieSphere.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Developer")]
     public class CourseController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
