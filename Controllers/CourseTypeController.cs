@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieSphere.Data;
@@ -6,6 +7,7 @@ using MovieSphere.Models;
 
 namespace MovieSphere.Controllers
 {
+    [Authorize]
     public class CourseTypeController : Controller
     {
         private readonly ApplicationDbContext _applicationDbContext;
