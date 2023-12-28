@@ -80,7 +80,14 @@ namespace MovieSphere.Controllers
             {
                 Email = register.EmailAddress,
                 UserName = register.EmailAddress,
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                DisplayName = register.DisplayName,
+                CreationDate = DateTime.Now,
+                FirstName = register.FirstName,
+                LastName = register.LastName,
+                DateOfBirth = register.DateOfBirth,
+                PlaceOfOrigin = register.PlaceOfOrigin,
+                IsPrivate = true
             };
 
             var newUserResponse = await _userManager.CreateAsync(newUser, register.Password);
