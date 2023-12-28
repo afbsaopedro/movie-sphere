@@ -51,5 +51,50 @@ namespace MovieSphere.Controllers
             TempData["Error"] = "Wrong credentials. Please, try again.";
             return View(login);
         }
+
+
+
+
+
+
+        public IActionResult Register()
+        {
+            var response = new RegisterVM();
+            return View(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterVM register)
+        {
+            if (!ModelState.IsValid) return View(register);
+
+            var user = await _userManager.FindByEmailAsync(register.EmailAddress);
+
+            if (user != null)
+            {
+                TempData["Error"] = "This E-mail address is already in use";
+                return View(register);
+            }
+
+            var newUser = new ApplicationUser()
+            {
+                Email = register.EmailAddress,
+                UserName = register.EmailAddress,
+                EmailConfirmed = true
+            };
+
+            var newUserResponse = await _userManager.CreateAsync(newUser, register.Password);
+
+            if (newUserResponse.Succeeded) return RedirectToAction("Index", "Home");
+
+            return RedirectToAction("Register", "Account");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
