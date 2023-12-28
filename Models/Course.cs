@@ -22,6 +22,7 @@ namespace MovieSphere.Models
 
         //NavigationProperties
         [ForeignKey("CourseTypeId")]
+        [DisplayName("Type")]
         public CourseType CourseType { get; set; }
         public ICollection<ApplicationUser>? UsersInCourse { get; set; }
     }
