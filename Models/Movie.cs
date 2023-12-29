@@ -10,7 +10,7 @@ namespace MovieSphere.Models
         public int Id { get; set; }
 
         [DisplayName("API Reference")]
-        public string ApiReference { get; set; }
+        public int ApiReference { get; set; }
 
         //NavigationProperties
         public ICollection<ApplicationUser> UsersWhoFavourited { get; set; }

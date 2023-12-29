@@ -1,0 +1,23 @@
+﻿@model MovieSphere.Services.Movie
+
+@{
+    ViewData["Title"] = Model.Title;
+    var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PosterImage;
+    var backdrop = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.BackdropPath;
+}
+
+<h1>@Model.Title</h1>
+<img src="@posterImage" />
+<p>@Model.ReleaseDate</p>
+<p>@Model.Overview</p>
+
+
+<form asp-action="AddToWatchlist">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Add to Watchlist" class="btn btn-primary" />
+    </div>
+</form>
+
+

@@ -1,0 +1,47 @@
+﻿@model MovieSphere.Services.MoviesResponse
+
+@{
+    var nextPage = Model.Page + 1;
+    var previousPage = Model.Page - 1;
+    ViewData["Title"] = "Search";
+}
+
+<form asp-action="MovieSearch" method="get">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label for="query" class="control-label"></label>
+        <input name="query" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+</form>
+
+<h1>Search</h1>
+
+@foreach (var item in Model.Movies ?? [])
+{
+    var source = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+
+    <div class="card" style="width: 18rem;">
+        <img src="@source" class="card-img-top" alt="Poster Image">
+        <div class="card-body">
+            <h5 class="card-title">@item.Title</h5>
+            <p class="card-text">@item.Overview</p>
+            <p class="card-text">@item.ReleaseDate</p>
+            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+        </div>
+    </div>
+}
+
+@if (previousPage <= 0)
+{
+    <a asp-route-query="@(Context.Request.Query["query"])" asp-route-page="@nextPage">Next Page</a>
+
+}
+else
+{
+    <a asp-route-query="@(Context.Request.Query["query"])" asp-route-page="@previousPage">Previous Page</a>
+    <a asp-route-query="@(Context.Request.Query["query"])" asp-route-page="@nextPage">Next Page</a>
+}
+

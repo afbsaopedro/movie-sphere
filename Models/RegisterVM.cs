@@ -35,7 +35,7 @@ namespace MovieSphere.Models
         public string? LastName { get; set; }
 
         [DisplayName("Birthday")]
-        public DateTime? DateOfBirth { get; set; }
+        public DateOnly? DateOfBirth { get; set; }
 
         [DisplayName("Where are you from?")]
         public string? PlaceOfOrigin { get; set; }
