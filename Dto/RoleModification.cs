@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieSphere.Models
+namespace MovieSphere.Dto
 {
     public class RoleModification
     {

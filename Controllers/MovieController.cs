@@ -68,5 +68,30 @@ namespace MovieSphere.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> AddToFavourites(IFormCollection collection)
+        {
+            var movieId = int.Parse(collection["Id"]);
+
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.ApiReference == movieId);
+
+            var user = await _userManager.GetUserAsync(User);
+
+            if (movie == null)
+            {
+                movie = new Models.Movie();
+                movie.ApiReference = movieId;
+                _context.Movies.Add(movie);
+            }
+
+            if (user.FavouriteMovies == null)
+            {
+                user.FavouriteMovies = new List<Models.Movie>();
+            }
+
+            user.FavouriteMovies.Add(movie);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

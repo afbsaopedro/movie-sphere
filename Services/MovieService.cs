@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal;
+using MovieSphere.Dto;
 using MovieSphere.Models;
 using System.Text.Json;
 
@@ -24,13 +25,13 @@ namespace MovieSphere.Services
             return response;
         }
 
-        public async Task<Movie> GetMovieById(int id)
+        public async Task<Dto.Movie> GetMovieById(int id)
         {
             var request = await _httpClient.GetAsync($"movie/{id}?language=en-US&api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f");
 
             var content = await request.Content.ReadAsStringAsync();
 
-            var response = JsonSerializer.Deserialize<Movie>(content);
+            var response = JsonSerializer.Deserialize<Dto.Movie>(content);
 
             return response;
         }

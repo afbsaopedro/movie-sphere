@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MovieSphere.Data;
+using MovieSphere.Dto;
 using MovieSphere.Models;
+using MovieSphere.Services;
 using System.Runtime.CompilerServices;
 
 namespace MovieSphere.Controllers
@@ -11,12 +14,15 @@ namespace MovieSphere.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ApplicationDbContext _context;
+        private readonly IMovieService _movieService;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext context, IMovieService movieService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _context = context;
+            _movieService = movieService;
         }
 
         public IActionResult Login()
@@ -102,6 +108,27 @@ namespace MovieSphere.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> Profile(string? Id)
+        {
+            var user = await _userManager.Users.
+                Include(u => u.Watchlist).
+                Include(u => u.FavouriteMovies).
+                FirstOrDefaultAsync(u => u.Id == _userManager.GetUserId(User));
+
+            if (Id != null)
+            {
+                user = await _userManager.FindByIdAsync(Id);
+            }
+
+            var favourites = user.FavouriteMovies != null ? await Task.WhenAll(user.FavouriteMovies.Select(async m => await _movieService.GetMovieById(m.ApiReference))) : [];
+
+            var watchlist = user.Watchlist != null ? await Task.WhenAll(user.Watchlist.Select(async m => await _movieService.GetMovieById(m.ApiReference))) : [];
+
+            var profile = new Profile(user, favourites, watchlist);
+
+            return View(profile);
         }
     }
 }

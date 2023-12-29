@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MovieSphere.Models;
 
-namespace MovieSphere.Models
+namespace MovieSphere.Dto
 {
     public class RoleEdit
     {

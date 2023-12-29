@@ -1,0 +1,53 @@
+﻿@model MovieSphere.Dto.Profile
+
+@{
+    ViewData["Title"] = Model.user.DisplayName + "'s Profile";
+}
+
+<div class="profile-container">
+    <img class="profile-picture" src="https://placekitten.com/200/300" alt="Profile Picture">
+
+    <div class="profile-info">
+        <div>
+            <h1>@Model.user.DisplayName's Profile</h1>
+        </div>
+
+        <h2>@Model.user.FirstName</h2>
+
+        <p>Email: @Model.user.Email</p>
+        <p>Username: @Model.user.DisplayName</p>
+
+        <h2>Bio</h2>
+        <p>@Model.user.Bio</p>
+
+        <h2>Favorites</h2>
+
+        <div class="movie-list">
+            @foreach (var item in Model.favourites)
+            {
+                var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+
+                <div class="movie-list-item">
+                    <img class="movie-image" src="@posterImage" alt="Movie Image">
+                    <div class="movie-title">@item.Title</div>
+                    <div class="movie-details">Released: @item.ReleaseDate</div>
+                </div>
+            }
+        </div>
+
+        <h2>Watchlist</h2>
+
+        <div class="movie-list">
+            @foreach (var item in Model.watchlist)
+            {
+                var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+
+                <div class="movie-list-item">
+                    <img class="movie-image" src="@posterImage" alt="Movie Image">
+                    <div class="movie-title">@item.Title</div>
+                    <div class="movie-details">Released: @item.ReleaseDate</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

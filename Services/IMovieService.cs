@@ -1,4 +1,6 @@
-﻿namespace MovieSphere.Services
+﻿using MovieSphere.Dto;
+
+namespace MovieSphere.Services
 {
     public interface IMovieService
     {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MovieSphere.Dto;
 using MovieSphere.Models;
 using System.ComponentModel.DataAnnotations;
 

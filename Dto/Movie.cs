@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace MovieSphere.Services
+namespace MovieSphere.Dto
 {
     public class Movie
     {
