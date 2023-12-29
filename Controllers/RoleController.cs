@@ -6,7 +6,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MovieSphere.Controllers
 {
-    [Authorize(Roles = "Developer")]
+    //[Authorize(Roles = "Developer")]
+    [Authorize]
     public class RoleController : Controller
     {
         private RoleManager<IdentityRole> roleManager;

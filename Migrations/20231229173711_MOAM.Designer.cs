@@ -9,11 +9,11 @@ using MovieSphere.Data;
 
 #nullable disable
 
-namespace MovieSphere.Data.Migrations
+namespace MovieSphere.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231227133621_UpdatedUserForIdentity")]
-    partial class UpdatedUserForIdentity
+    [Migration("20231229173711_MOAM")]
+    partial class MOAM
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -213,8 +213,11 @@ namespace MovieSphere.Data.Migrations
                     b.Property<DateTime?>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly?>("DateOfBirth")
+                        .HasColumnType("date");
+
+                    b.Property<string>("DisplayName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -589,9 +592,8 @@ namespace MovieSphere.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("ApiReference")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ApiReference")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

@@ -8,7 +8,7 @@ using MovieSphere.Data;
 
 #nullable disable
 
-namespace MovieSphere.Data.Migrations
+namespace MovieSphere.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
