@@ -2,8 +2,17 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Movie Sphere</h1>
-    <p>Yay movies</p>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <div class="container py-5 text-center">
+        <h1 class="display-4">Welcome to Movie Sphere</h1>
+        <p class="lead">In Movie Sphere you can comment, rate and review movies for everyone in your university to see.</p>
+        <p class="lead">Share with your colleagues and teachers the movies you are most passionate about!</p>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-6">
+            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg btn-block">Sign up now</a>
+            </div>
+            <div class="col-md-6">
+            <a asp-action="Popular" asp-controller="Movie" class="btn btn-primary btn-lg btn-block">Check out some movies</a>
+            </div>
+        </div>
+    </div>
