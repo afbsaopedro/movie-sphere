@@ -93,5 +93,33 @@ namespace MovieSphere.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public async Task<IActionResult> RemoveFromFavourites(IFormCollection collection)
+        {
+            var movieId = int.Parse(collection["Id"]);
+
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.ApiReference == movieId);
+
+            var user = await _userManager.Users.Include(m => m.FavouriteMovies).FirstAsync(u => u.Id == _userManager.GetUserId(User));
+
+            user.FavouriteMovies.Remove(movie);
+            await _context.SaveChangesAsync();
+
+
+            return RedirectToAction("Profile", "Account");
+        }
+
+        public async Task<IActionResult> RemoveFromWatchlist(IFormCollection collection)
+        {
+            var movieId = int.Parse(collection["Id"]);
+
+            var movie = await _context.Movies.FirstOrDefaultAsync(m => m.ApiReference == movieId);
+
+            var user = await _userManager.Users.Include(m => m.Watchlist).FirstAsync(u => u.Id == _userManager.GetUserId(User));
+
+            user.Watchlist.Remove(movie);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Profile", "Account");
+        }
     }
 }

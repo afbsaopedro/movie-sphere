@@ -4,12 +4,101 @@
     ViewData["Title"] = Model.user.DisplayName + "'s Profile";
 }
 
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>@Model.user.DisplayName's Profile</h1>
+            <div class="card">
+                <img src="https://placekitten.com/200/300" class="card-img-top img-fluid" alt="Profile Picture">
+                <div class="card-body">
+                    <h5 class="card-title">Username: @Model.user.DisplayName</h5>
+                    <p class="card-text">E-mail: @Model.user.Email</p>
+                    <p class="card-text">Bio: @Model.user.Bio</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <!-- Favorite Movies -->
+            <div class="card">
+                <div class="card-header">
+                    Favorite Movies
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.favourites)
+                        {
+                            var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <img src="@posterImage" class="card-img-top img-fluid" alt="Movie Poster">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><@item.Title></h6>
+                                        <p>Release Year: @item.ReleaseDate</p>
+                                        <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watchlist -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    Watchlist
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.watchlist)
+                        {
+                            var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+
+                            <div class="col-md-6 mb-4">
+                                <div class="card">
+                                    <img src="@posterImage" class="card-img-top img-fluid" alt="Movie Poster">
+                                    <div class="card-body">
+                                        <h6 class="card-title"><?php echo $movie['title']; ?></h6>
+                                        <p>Release Year: @item.ReleaseDate</p>
+                                        <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* 
 <div class="profile-container">
     <img class="profile-picture" src="https://placekitten.com/200/300" alt="Profile Picture">
 
     <div class="profile-info">
         <div>
-            <h1>@Model.user.DisplayName's Profile</h1>
+            
         </div>
 
         <h2>@Model.user.FirstName</h2>
@@ -50,4 +139,4 @@
             }
         </div>
     </div>
-</div>
+</div> *@

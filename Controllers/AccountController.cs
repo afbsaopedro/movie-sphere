@@ -115,12 +115,7 @@ namespace MovieSphere.Controllers
             var user = await _userManager.Users.
                 Include(u => u.Watchlist).
                 Include(u => u.FavouriteMovies).
-                FirstOrDefaultAsync(u => u.Id == _userManager.GetUserId(User));
-
-            if (Id != null)
-            {
-                user = await _userManager.FindByIdAsync(Id);
-            }
+                FirstOrDefaultAsync(u => u.Id == (Id != null ? Id : _userManager.GetUserId(User)));
 
             var favourites = user.FavouriteMovies != null ? await Task.WhenAll(user.FavouriteMovies.Select(async m => await _movieService.GetMovieById(m.ApiReference))) : [];
 

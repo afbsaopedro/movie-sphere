@@ -6,11 +6,17 @@
     var backdrop = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.BackdropPath;
 }
 
-<h1>@Model.Title</h1>
-<img src="@posterImage" />
-<p>@Model.ReleaseDate</p>
-<p>@Model.Overview</p>
+<div class="container mt-4">
+    <div class="card">
+        <img src="@posterImage" alt="Movie Poster">
 
+        <div class="card-body">
+            <h5 class="card-title">@Model.Title</h5>
+            <p class="card-text">@Model.Overview</p>
+            <p class="card-text"><small class="text-muted">Released in Year @Model.ReleaseDate</small></p>
+        </div>
+    </div>
+</div>
 
 <form asp-action="AddToWatchlist">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -28,4 +34,20 @@
     </div>
 </form>
 
+
+<form asp-action="RemoveFromFavourites">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Remove from Favourites" class="btn btn-danger" />
+    </div>
+</form>
+
+<form asp-action="RemoveFromWatchlist">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Remove from Watchlist" class="btn btn-danger" />
+    </div>
+</form>
 

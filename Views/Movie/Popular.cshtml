@@ -19,32 +19,49 @@
 
 <h1>Popular</h1>
 
-@foreach (var item in Model.Movies)
-{
-    var source = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
 
-    <div class="card" style="width: 18rem;">
-        <img src="@source" class="card-img-top" alt="Poster Image">
-  <div class="card-body">
-    <h5 class="card-title">@item.Title</h5>
-    <p class="card-text">@item.Overview</p>
-    <p class="card-text">@item.ReleaseDate</p>
-    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
-  </div>
+
+<div class="container mt-4">
+    <div class="row">
+
+        @foreach (var item in Model.Movies)
+        {
+            var source = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+            <div class="col-md-6 mb-4">
+                <div class="card">
+
+                    <img src="@source" alt="Movie Poster">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title">@item.Title</h5>
+
+
+                        <p class="card-text">@item.Overview</p>
+
+
+                        <p class="card-text"><small class="text-muted">@item.ReleaseDate</small></p>
+
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
-}
 
 @if (previousPage <= 0)
 {
     <a asp-route-page="@nextPage">Next Page</a>
-} else
+}
+else
 {
     <a asp-route-page="@previousPage">Previous Page</a>
     <a asp-route-page="@nextPage">Next Page</a>
 }
 
 
- 
+
 
 
 
