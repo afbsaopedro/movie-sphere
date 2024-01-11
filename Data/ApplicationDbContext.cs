@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using MovieSphere.Models;
 using System.Reflection.Emit;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 
 namespace MovieSphere.Data
 {
@@ -68,6 +70,34 @@ namespace MovieSphere.Data
                 new Course { Id = 28, Name = "Hidrogénio", Tag = "Hidro", CourseTypeId = 4 },
                 new Course { Id = 29, Name = "Renewable Energies and Environment", Tag = "REE", CourseTypeId = 4 }
                 );
+
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "Developer" },
+                new IdentityRole { Name = "Admin" },
+                new IdentityRole { Name = "Manager" }
+            );
+
+            var pwdHasher = new PasswordHasher<ApplicationUser>();
+            
+            modelBuilder.Entity<ApplicationUser>().HasData(
+                new ApplicationUser {
+                    UserName = "d.olival@moviesphere.com",
+                    Email = "d.olival@moviesphere.com",
+                    NormalizedEmail = "D.OLIVAL@MOVIESPHERE.COM",
+                    NormalizedUserName = "D.OLIVAL@MOVIESPHERE.COM",
+                    PasswordHash = pwdHasher.HashPassword(null, "dolival"),
+                    DisplayName = "dolival",
+                    CreationDate = DateTime.Now,
+                    FirstName = "Diogo",
+                    LastName = "Olival",
+                    DateOfBirth = new DateOnly(1991, 1, 2),
+                    PlaceOfOrigin = "Madeira",
+                    Bio = "Teacher @ ESTG.",
+                    IsPrivate = true,
+                    CourseId = 6,
+                    EmailConfirmed = true
+                }
+            );
 
             base.OnModelCreating(modelBuilder);
         }

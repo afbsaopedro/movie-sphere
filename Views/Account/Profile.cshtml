@@ -34,7 +34,7 @@
                                 <div class="card">
                                     <img src="@posterImage" class="card-img-top img-fluid" alt="Movie Poster">
                                     <div class="card-body">
-                                        <h6 class="card-title"><@item.Title></h6>
+                                        <h6 class="card-title">@item.Title</h6>
                                         <p>Release Year: @item.ReleaseDate</p>
                                         <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a>
                                     </div>
@@ -60,7 +60,7 @@
                                 <div class="card">
                                     <img src="@posterImage" class="card-img-top img-fluid" alt="Movie Poster">
                                     <div class="card-body">
-                                        <h6 class="card-title"><?php echo $movie['title']; ?></h6>
+                                        <h6 class="card-title">@item.Title</h6>
                                         <p>Release Year: @item.ReleaseDate</p>
                                         <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a>
                                     </div>
