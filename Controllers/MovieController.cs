@@ -22,7 +22,7 @@ namespace MovieSphere.Controllers
 
         public async Task<IActionResult> Popular(int? page)
         {
-            var movies = await _movieService.PopularMovies(page??1);
+            var movies = await _movieService.PopularMovies(page ?? 1);
 
             return View(movies);
         }
@@ -32,7 +32,7 @@ namespace MovieSphere.Controllers
         //Post
         public async Task<IActionResult> MovieSearch(int? page, string query)
         {
-            var movies = await _movieService.FindMovie(query??"", page ?? 1);
+            var movies = await _movieService.FindMovie(query ?? "", page ?? 1);
 
             return View(movies);
         }
@@ -52,15 +52,8 @@ namespace MovieSphere.Controllers
 
             var user = await _userManager.GetUserAsync(User);
 
-
-            if (movie == null)
+            if (user.Watchlist == null)
             {
-                movie = new Models.Movie();
-                movie.ApiReference = movieId;
-                _context.Movies.Add(movie);
-            }
-
-            if (user.Watchlist == null) {
                 user.Watchlist = new List<Models.Movie>();
             }
 
@@ -76,13 +69,6 @@ namespace MovieSphere.Controllers
             var movie = await _context.Movies.FirstOrDefaultAsync(m => m.ApiReference == movieId);
 
             var user = await _userManager.GetUserAsync(User);
-
-            if (movie == null)
-            {
-                movie = new Models.Movie();
-                movie.ApiReference = movieId;
-                _context.Movies.Add(movie);
-            }
 
             if (user.FavouriteMovies == null)
             {
@@ -120,6 +106,59 @@ namespace MovieSphere.Controllers
             user.Watchlist.Remove(movie);
             await _context.SaveChangesAsync();
             return RedirectToAction("Profile", "Account");
+        }
+
+        public async Task<IActionResult> Rate(IFormCollection collection)
+        {
+            var movieId = int.Parse(collection["Id"]);
+            var movie = await _context.Movies
+                .Include(m => m.Ratings)
+                .FirstOrDefaultAsync(m => m.ApiReference == movieId);
+            var user = await _userManager.GetUserAsync(User);
+
+            movie.Ratings ??= [];
+
+            var rating = movie.Ratings.FirstOrDefault(r => r.ApplicationUser == user);
+            if (rating != null)
+            {
+                rating.Score = int.Parse(collection["Score"]);
+            }
+            else
+            {
+                rating = new Rating
+                {
+                    ApplicationUser = user,
+                    Score = int.Parse(collection["Score"])
+                };
+                movie.Ratings.Add(rating);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "Movie", new { id = movieId });
+        }
+
+        public async Task<IActionResult> AddComment(IFormCollection collection)
+        {
+            var movieId = int.Parse(collection["Id"]);
+            var movie = await _context.Movies
+                .Include(m => m.Comments)
+                .FirstOrDefaultAsync(m => m.ApiReference == movieId);
+            var user = await _userManager.GetUserAsync(User);
+
+            movie.Comments ??= [];
+
+            var comment = new Comment
+            {
+                ApplicationUser = user,
+                Content = collection["Content"]
+            };
+
+            movie.Comments.Add(comment);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Details", "Movie", new { id = movieId });
         }
     }
 }

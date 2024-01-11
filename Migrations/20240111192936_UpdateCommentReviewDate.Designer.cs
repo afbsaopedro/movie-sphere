@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieSphere.Data;
 
@@ -11,9 +12,11 @@ using MovieSphere.Data;
 namespace MovieSphere.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240111192936_UpdateCommentReviewDate")]
+    partial class UpdateCommentReviewDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,17 +84,17 @@ namespace MovieSphere.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49379abf-f146-406b-9ef7-059723ba41a9",
+                            Id = "d513944b-eeec-4bfd-9edf-129ed8967365",
                             Name = "Developer"
                         },
                         new
                         {
-                            Id = "9f088804-c96b-4d92-9728-ac02a77d076c",
+                            Id = "8073d9ae-5a64-49cc-b033-d3ef1f645202",
                             Name = "Admin"
                         },
                         new
                         {
-                            Id = "e1f0ec7c-d318-4fbf-ac76-0cae478c92a0",
+                            Id = "fbef3039-a719-417a-9959-a222ec88d672",
                             Name = "Manager"
                         });
                 });
@@ -183,13 +186,6 @@ namespace MovieSphere.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "2a5da078-3a9c-4636-a2d9-45014ccc5815",
-                            RoleId = "49379abf-f146-406b-9ef7-059723ba41a9"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -309,12 +305,12 @@ namespace MovieSphere.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a5da078-3a9c-4636-a2d9-45014ccc5815",
+                            Id = "d887d18a-41ba-4bec-86a6-333573c13045",
                             AccessFailedCount = 0,
                             Bio = "Teacher @ ESTG.",
-                            ConcurrencyStamp = "f3f3e376-aa50-4a42-8cee-c89ac6d1eb5d",
+                            ConcurrencyStamp = "01e27fd4-094d-4f16-a0a0-4d7a4bc16184",
                             CourseId = 6,
-                            CreationDate = new DateTime(2024, 1, 11, 22, 51, 28, 477, DateTimeKind.Local).AddTicks(319),
+                            CreationDate = new DateTime(2024, 1, 11, 19, 29, 35, 417, DateTimeKind.Local).AddTicks(8033),
                             DateOfBirth = new DateOnly(1991, 1, 2),
                             DisplayName = "dolival",
                             Email = "d.olival@moviesphere.com",
@@ -325,10 +321,10 @@ namespace MovieSphere.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "D.OLIVAL@MOVIESPHERE.COM",
                             NormalizedUserName = "D.OLIVAL@MOVIESPHERE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKml+iitDXWp49zFFM1oLkMPQF5YfkUc7WuAovXPMML8pmn7wyjjvXPtQbL6kWmnZg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHwP+RlO1XdEH89b6Nap6vuyRfIEawDJrY8MmbB7c1CTbNbAQEVLBUqvUQGpDw++AQ==",
                             PhoneNumberConfirmed = false,
                             PlaceOfOrigin = "Madeira",
-                            SecurityStamp = "86c7bfff-2845-487c-8e44-9e3b06baee2c",
+                            SecurityStamp = "a5c9f37a-14df-4076-93da-914969432dfb",
                             TwoFactorEnabled = false,
                             UserName = "d.olival@moviesphere.com"
                         });

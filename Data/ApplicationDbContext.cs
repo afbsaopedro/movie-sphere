@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using MovieSphere.Models;
 using System.Reflection.Emit;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity;
 
 namespace MovieSphere.Data
 {
@@ -14,7 +13,7 @@ namespace MovieSphere.Data
         }
 
         public DbSet<Comment> Comments { get; set; }
-        public DbSet<Course> Courses { get;set; }
+        public DbSet<Course> Courses { get; set; }
         public DbSet<CourseType> CourseTypes { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Rating> Ratings { get; set; }
@@ -30,11 +29,11 @@ namespace MovieSphere.Data
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.Watchlist)
                 .WithMany(m => m.UsersInWatchlist)
-                .UsingEntity( um => um.ToTable("UsersWatchlist"));
+                .UsingEntity(um => um.ToTable("UsersWatchlist"));
 
             modelBuilder.Entity<CourseType>().HasData(
                 new CourseType { Id = 1, Type = "Licenciatura" },
-                new CourseType { Id = 2, Type = "Mestrado"},
+                new CourseType { Id = 2, Type = "Mestrado" },
                 new CourseType { Id = 3, Type = "CTeSP" },
                 new CourseType { Id = 4, Type = "Pós-Graduação" }
                 );
@@ -72,15 +71,17 @@ namespace MovieSphere.Data
                 );
 
             modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Name = "Developer" },
+                new IdentityRole { Id = "49379abf-f146-406b-9ef7-059723ba41a9", Name = "Developer" },
                 new IdentityRole { Name = "Admin" },
                 new IdentityRole { Name = "Manager" }
             );
 
             var pwdHasher = new PasswordHasher<ApplicationUser>();
-            
+
             modelBuilder.Entity<ApplicationUser>().HasData(
-                new ApplicationUser {
+                new ApplicationUser
+                {
+                    Id = "2a5da078-3a9c-4636-a2d9-45014ccc5815",
                     UserName = "d.olival@moviesphere.com",
                     Email = "d.olival@moviesphere.com",
                     NormalizedEmail = "D.OLIVAL@MOVIESPHERE.COM",
@@ -96,6 +97,14 @@ namespace MovieSphere.Data
                     IsPrivate = true,
                     CourseId = 6,
                     EmailConfirmed = true
+                }
+            );
+
+            modelBuilder.Entity<IdentityUserRole<string>>().HasData(
+                new IdentityUserRole<string>
+                {
+                    RoleId = "49379abf-f146-406b-9ef7-059723ba41a9",
+                    UserId = "2a5da078-3a9c-4636-a2d9-45014ccc5815"
                 }
             );
 

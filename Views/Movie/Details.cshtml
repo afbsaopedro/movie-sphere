@@ -1,22 +1,68 @@
 ﻿@model MovieSphere.Dto.Movie
+@inject UserManager<ApplicationUser> userManager
 
 @{
     ViewData["Title"] = Model.Title;
-    var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.PosterImage;
-    var backdrop = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + Model.BackdropPath;
+    var posterImage = "https://image.tmdb.org/t/p/original" + Model.PosterImage;
+    var backdrop = "https://image.tmdb.org/t/p/original/" + Model.BackdropPath;
+    var userId = userManager.GetUserId(User);
+
+    <style>
+        .backdrop {
+            position: relative;
+            height: 600px;
+            width: 100%;
+        }
+        
+        .backdrop .shadow {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            height: 100%;
+            width: 100%;
+        }
+
+        .backdrop .image {
+            z-index: -2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url("@backdrop");
+            background-size: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .backdrop .container {
+            height: 100%;
+        }
+
+        .backdrop .container img {
+            height: 450px;
+        }
+    </style>
 }
 
-<div class="container mt-4">
-    <div class="card">
-        <img src="@posterImage" alt="Movie Poster">
+<div class="backdrop">
+    <div class="shadow"></div>
+    <div class="image"></div>
 
-        <div class="card-body">
-            <h5 class="card-title">@Model.Title</h5>
-            <p class="card-text">@Model.Overview</p>
-            <p class="card-text"><small class="text-muted">Released in Year @Model.ReleaseDate</small></p>
+    <div class="container d-flex align-items-center text-light">
+        <div class="d-flex" style="gap: 32px">
+            <img src="@posterImage" alt="Movie Poster">
+
+            <div class="card-body">
+                <h1 class="card-title">@Model.Title</h1>
+                <p class="card-text">@Model.Overview</p>
+                <p class="card-text text-light-emphasis"><small>Released in Year @Model.ReleaseDate</small></p>
+            </div>
         </div>
     </div>
 </div>
+
+
 
 <form asp-action="AddToWatchlist">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -51,3 +97,57 @@
     </div>
 </form>
 
+<form asp-action="Rate">
+    @{
+        var rating = Model.Ratings is not null ? Model.Ratings.FirstOrDefault(r => r.ApplicationUserId == userId) : null;
+        var score = rating is not null ? rating.Score : 0;
+    }
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="Score" class="control-label"></label>
+        <input name="Score" type="number" min="1" max="10" step="1" value="@score" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Score" class="btn btn-primary" />
+    </div>
+</form>
+
+
+<form asp-action="AddComment">
+    @{
+        var comment = Model.Comments is not null ? Model.Comments.FirstOrDefault(r => r.ApplicationUserId == userId) : null;
+        var content = comment is not null ? comment.Content : "";
+    }
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="Content" class="control-label"></label>
+        <textarea name="Content" placeholder="This movie is amazeballs!">@content</textarea>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Post review" class="btn btn-primary" />
+    </div>
+</form>
+
+@if (Model.Comments is not null)
+{
+    @foreach (var comment in Model.Comments.Where(c => c.ApplicationUserId != userId))
+    {
+        <div>
+    @{
+                var movieRating = Model.Ratings.FirstOrDefault(r => r.ApplicationUserId == comment.ApplicationUserId);
+            }
+            <p>@comment.ApplicationUser.DisplayName Score: @if (movieRating is not null)
+                {
+                    @movieRating.Score
+                }
+                else
+                {
+                    <span>Not
+                        yet reviewed</span>
+                }</p>
+            <p>@comment.Content</p>
+        </div>
+    }
+}

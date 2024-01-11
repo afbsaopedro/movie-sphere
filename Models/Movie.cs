@@ -16,6 +16,6 @@ namespace MovieSphere.Models
         public ICollection<ApplicationUser> UsersWhoFavourited { get; set; }
         public ICollection<ApplicationUser> UsersInWatchlist { get; set; }
         public ICollection<Rating> Ratings { get; set; }
-        public ICollection<Comment> Comments { get;}
+        public ICollection<Comment> Comments { get; set; }
     }
 }

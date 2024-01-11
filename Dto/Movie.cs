@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using MovieSphere.Models;
 
 namespace MovieSphere.Dto
 {
@@ -21,5 +22,8 @@ namespace MovieSphere.Dto
 
         [JsonPropertyName("title")]
         public string Title { get; set; }
+        
+        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

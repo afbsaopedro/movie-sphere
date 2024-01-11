@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices.JavaScript;
 
 namespace MovieSphere.Models
 {
@@ -12,6 +13,8 @@ namespace MovieSphere.Models
 
         [DisplayName("Comment")]
         public string Content { get; set; }
+
+        public DateTime Date { get; set; } = DateTime.Now;
 
         //ForeignKeys
         [DisplayName("Movie ID")]

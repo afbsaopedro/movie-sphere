@@ -9,5 +9,8 @@ namespace MovieSphere.Dto
 
         [JsonPropertyName("page")]
         public int Page { get; set; }
+
+        [JsonPropertyName("total_pages")]
+        public int TotalPages { get; set; }
     }
 }
