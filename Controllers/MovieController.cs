@@ -59,7 +59,7 @@ namespace MovieSphere.Controllers
 
             user.Watchlist.Add(movie);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "Movie", new { id = movieId });
         }
 
         public async Task<IActionResult> AddToFavourites(IFormCollection collection)
@@ -77,7 +77,7 @@ namespace MovieSphere.Controllers
 
             user.FavouriteMovies.Add(movie);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Details", "Movie", new { id = movieId });
         }
 
         public async Task<IActionResult> RemoveFromFavourites(IFormCollection collection)
@@ -92,7 +92,7 @@ namespace MovieSphere.Controllers
             await _context.SaveChangesAsync();
 
 
-            return RedirectToAction("Profile", "Account");
+            return RedirectToAction("Details", "Movie", new { id = movieId });
         }
 
         public async Task<IActionResult> RemoveFromWatchlist(IFormCollection collection)
@@ -105,7 +105,7 @@ namespace MovieSphere.Controllers
 
             user.Watchlist.Remove(movie);
             await _context.SaveChangesAsync();
-            return RedirectToAction("Profile", "Account");
+            return RedirectToAction("Details", "Movie", new { id = movieId });
         }
 
         public async Task<IActionResult> Rate(IFormCollection collection)
@@ -122,6 +122,7 @@ namespace MovieSphere.Controllers
             if (rating != null)
             {
                 rating.Score = int.Parse(collection["Score"]);
+                rating.UpdatedAt = DateTime.Now;
             }
             else
             {
@@ -148,13 +149,21 @@ namespace MovieSphere.Controllers
 
             movie.Comments ??= [];
 
-            var comment = new Comment
+            var comment = movie.Comments.FirstOrDefault(r => r.ApplicationUser == user);
+            if (comment != null)
             {
-                ApplicationUser = user,
-                Content = collection["Content"]
-            };
-
-            movie.Comments.Add(comment);
+                comment.Content = collection["Content"];
+                comment.UpdatedAt = DateTime.Now;
+            }
+            else
+            {
+                comment = new Comment
+                {
+                    ApplicationUser = user,
+                    Content = collection["Content"]
+                };
+                movie.Comments.Add(comment);
+            }
 
             await _context.SaveChangesAsync();
 

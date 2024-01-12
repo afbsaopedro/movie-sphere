@@ -22,8 +22,10 @@ namespace MovieSphere.Dto
 
         [JsonPropertyName("title")]
         public string Title { get; set; }
-        
+
         public ICollection<Comment> Comments { get; set; }
         public ICollection<Rating> Ratings { get; set; }
+        public ICollection<ApplicationUser> UsersWhoFavourited { get; set; }
+        public ICollection<ApplicationUser> UsersInWatchlist { get; set; }
     }
 }

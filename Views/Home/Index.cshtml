@@ -1,22 +1,25 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-6">
+  <div class="row mt-4">
+    <div class="col-md-12">
       <h1 class="display-4">MovieSphere</h1>
       <p class="lead">In MovieSphere you can rate and review movies for everyone in your university to see.</p>
       <p class="lead">Share with your colleagues and teachers the movies you are most passionate about!</p>
       <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">Sign up now</a>
     </div>
-    <div class="col-md-6">
-      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gsFun8nATm52aGHeT8ueAel98nE.jpg" class="img-fluid" alt="Movie poster" />
-    </div>
   </div>
 </div>
 
-<div class="container text-center">
+<div class="d-flex justify-content-center mt-4">
+  <img
+    src="https://estg.ipportalegre.pt/media/filer_public_thumbnails/filer_public/81/61/8161468e-d62a-4a09-ab50-acbb1259540c/06_viver.jpg__1920x480_q85_crop_subsampling-2.jpg"
+    class="img-fluid" alt="Movie poster" />
+</div>
+
+<div class="container text-center mt-4">
   <div class="row">
     <div class="col-md-12">
       <a asp-action="Popular" asp-controller="Movie" class="btn btn-primary">Check out some movies</a>
@@ -24,7 +27,3 @@
     </div>
   </div>
 </div>
-
-
-
-

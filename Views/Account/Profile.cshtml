@@ -9,7 +9,7 @@
         <div class="col-md-4">
             <h1>@Model.user.DisplayName's Profile</h1>
             <div class="card">
-                <img src="https://placekitten.com/200/300" class="card-img-top img-fluid" alt="Profile Picture">
+                <img src="https://cataas.com/cat" class="card-img-top img-fluid" alt="Profile Picture">
                 <div class="card-body">
                     <h5 class="card-title">Username: @Model.user.DisplayName</h5>
                     <p class="card-text">E-mail: @Model.user.Email</p>
@@ -28,7 +28,7 @@
                     <div class="row">
                         @foreach (var item in Model.favourites)
                         {
-                            var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+                            var posterImage = "https://image.tmdb.org/t/p/original/" + item.PosterImage;
 
                             <div class="col-md-6 mb-4">
                                 <div class="card">
@@ -54,7 +54,7 @@
                     <div class="row">
                         @foreach (var item in Model.watchlist)
                         {
-                            var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+                            var posterImage = "https://image.tmdb.org/t/p/original/" + item.PosterImage;
 
                             <div class="col-md-6 mb-4">
                                 <div class="card">
@@ -92,51 +92,51 @@
 
 
 
-@* 
+@*
 <div class="profile-container">
-    <img class="profile-picture" src="https://placekitten.com/200/300" alt="Profile Picture">
+<img class="profile-picture" src="https://placekitten.com/200/300" alt="Profile Picture">
 
-    <div class="profile-info">
-        <div>
-            
-        </div>
+<div class="profile-info">
+<div>
 
-        <h2>@Model.user.FirstName</h2>
+</div>
 
-        <p>Email: @Model.user.Email</p>
-        <p>Username: @Model.user.DisplayName</p>
+<h2>@Model.user.FirstName</h2>
 
-        <h2>Bio</h2>
-        <p>@Model.user.Bio</p>
+<p>Email: @Model.user.Email</p>
+<p>Username: @Model.user.DisplayName</p>
 
-        <h2>Favorites</h2>
+<h2>Bio</h2>
+<p>@Model.user.Bio</p>
 
-        <div class="movie-list">
-            @foreach (var item in Model.favourites)
-            {
-                var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+<h2>Favorites</h2>
 
-                <div class="movie-list-item">
-                    <img class="movie-image" src="@posterImage" alt="Movie Image">
-                    <div class="movie-title">@item.Title</div>
-                    <div class="movie-details">Released: @item.ReleaseDate</div>
-                </div>
-            }
-        </div>
+<div class="movie-list">
+@foreach (var item in Model.favourites)
+{
+var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
 
-        <h2>Watchlist</h2>
+<div class="movie-list-item">
+<img class="movie-image" src="@posterImage" alt="Movie Image">
+<div class="movie-title">@item.Title</div>
+<div class="movie-details">Released: @item.ReleaseDate</div>
+</div>
+}
+</div>
 
-        <div class="movie-list">
-            @foreach (var item in Model.watchlist)
-            {
-                var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+<h2>Watchlist</h2>
 
-                <div class="movie-list-item">
-                    <img class="movie-image" src="@posterImage" alt="Movie Image">
-                    <div class="movie-title">@item.Title</div>
-                    <div class="movie-details">Released: @item.ReleaseDate</div>
-                </div>
-            }
-        </div>
-    </div>
+<div class="movie-list">
+@foreach (var item in Model.watchlist)
+{
+var posterImage = "https://www.themoviedb.org/t/p/w300_and_h450_bestv2" + item.PosterImage;
+
+<div class="movie-list-item">
+<img class="movie-image" src="@posterImage" alt="Movie Image">
+<div class="movie-title">@item.Title</div>
+<div class="movie-details">Released: @item.ReleaseDate</div>
+</div>
+}
+</div>
+</div>
 </div> *@

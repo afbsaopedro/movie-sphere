@@ -14,7 +14,8 @@ namespace MovieSphere.Models
         [DisplayName("Comment")]
         public string Content { get; set; }
 
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         //ForeignKeys
         [DisplayName("Movie ID")]

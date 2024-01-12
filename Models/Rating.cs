@@ -12,6 +12,9 @@ namespace MovieSphere.Models
 
         public int Score { get; set; }
 
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
         //ForeignKeys
         [DisplayName("Movie ID")]
         public int MovieId { get; set; }

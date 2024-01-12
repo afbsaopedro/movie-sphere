@@ -13,13 +13,13 @@
             height: 600px;
             width: 100%;
         }
-        
+
         .backdrop .shadow {
             z-index: -1;
             position: absolute;
             top: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.3);
+            background-color: rgba(0, 0, 0, 0.6);
             height: 100%;
             width: 100%;
         }
@@ -51,103 +51,162 @@
 
     <div class="container d-flex align-items-center text-light">
         <div class="d-flex" style="gap: 32px">
-            <img src="@posterImage" alt="Movie Poster">
+            <div class="d-flex flex-column justify-content-center">
+                <img src="@posterImage" alt="Movie Poster">
 
-            <div class="card-body">
-                <h1 class="card-title">@Model.Title</h1>
-                <p class="card-text">@Model.Overview</p>
-                <p class="card-text text-light-emphasis"><small>Released in Year @Model.ReleaseDate</small></p>
+                <div class="d-flex mt-2" style="gap: 8px">
+                    @{
+                        var isFavorite = Model.UsersWhoFavourited is not null ? Model.UsersWhoFavourited.FirstOrDefault(f =>
+                        f.Id == userId) is not null : false;
+                        var isInWatchlist = Model.UsersInWatchlist is not null ? Model.UsersInWatchlist.FirstOrDefault(w =>
+                        w.Id == userId) is not null : false;
+                    }
+
+                    @if (isInWatchlist)
+                    {
+                        <form asp-action="RemoveFromWatchlist">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger d-flex align-items-center" style="gap: 4px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z" />
+                                    </svg>
+                                    Watchlist
+                                </button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="AddToWatchlist">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary d-flex align-items-center" style="gap: 4px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                                    </svg>
+                                    Watchlist
+                                </button>
+                            </div>
+                        </form>
+                    }
+
+                    @if (isFavorite)
+                    {
+                        <form asp-action="RemoveFromFavourites">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-danger d-flex align-items-center" style="gap: 4px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z" />
+                                    </svg>
+                                    Favourites
+                                </button>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-action="AddToFavourites">
+                            <input type="hidden" asp-for="Id" />
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary d-flex align-items-center" style="gap: 4px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
+                                    </svg>
+                                    Favourites
+                                </button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+
+            <div>
+                <h1>@Model.Title</h1>
+                <p>@Model.Overview</p>
+                <p><small>Released in Year @Model.ReleaseDate</small></p>
             </div>
         </div>
     </div>
 </div>
 
+<div class="container mt-4" style="max-width: 650px">
+    <form asp-action="Rate" class="d-flex" style="gap: 12px">
+        @{
+            var rating = Model.Ratings is not null ? Model.Ratings.FirstOrDefault(r => r.ApplicationUserId == userId) :
+            null;
+            var score = rating is not null ? rating.Score : 0;
+        }
+        <input type="hidden" asp-for="Id" />
+
+        <div class="input-group">
+            <input type="number" name="Score" class="form-control" style="width: auto" min="1" max="5" step="1"
+                value="@score">
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Score" class="btn btn-primary" />
+        </div>
+    </form>
 
 
-<form asp-action="AddToWatchlist">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <input type="submit" value="Add to Watchlist" class="btn btn-primary" />
-    </div>
-</form>
+    <form class="mt-4" asp-action="AddComment">
+        @{
+            var comment = Model.Comments is not null ? Model.Comments.FirstOrDefault(r => r.ApplicationUserId == userId) :
+            null;
+            var content = comment is not null ? comment.Content : "";
+        }
+        <input type="hidden" asp-for="Id" />
 
-<form asp-action="AddToFavourites">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <input type="submit" value="Add to Favourites" class="btn btn-primary" />
-    </div>
-</form>
+        <div class="form-floating">
+            <textarea required class="form-control" placeholder="Leave your review here" style="height: 250px"
+                id="content" name="Content">@content</textarea>
+            <label for="content">Reviews</label>
+        </div>
 
+        <div class="form-group mt-2">
+            <input type="submit" value="Post review" class="btn btn-primary" />
+        </div>
+    </form>
 
-<form asp-action="RemoveFromFavourites">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <input type="submit" value="Remove from Favourites" class="btn btn-danger" />
-    </div>
-</form>
-
-<form asp-action="RemoveFromWatchlist">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <input type="submit" value="Remove from Watchlist" class="btn btn-danger" />
-    </div>
-</form>
-
-<form asp-action="Rate">
-    @{
-        var rating = Model.Ratings is not null ? Model.Ratings.FirstOrDefault(r => r.ApplicationUserId == userId) : null;
-        var score = rating is not null ? rating.Score : 0;
-    }
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label for="Score" class="control-label"></label>
-        <input name="Score" type="number" min="1" max="10" step="1" value="@score" />
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Score" class="btn btn-primary" />
-    </div>
-</form>
-
-
-<form asp-action="AddComment">
-    @{
-        var comment = Model.Comments is not null ? Model.Comments.FirstOrDefault(r => r.ApplicationUserId == userId) : null;
-        var content = comment is not null ? comment.Content : "";
-    }
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <input type="hidden" asp-for="Id" />
-    <div class="form-group">
-        <label for="Content" class="control-label"></label>
-        <textarea name="Content" placeholder="This movie is amazeballs!">@content</textarea>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Post review" class="btn btn-primary" />
-    </div>
-</form>
-
-@if (Model.Comments is not null)
-{
-    @foreach (var comment in Model.Comments.Where(c => c.ApplicationUserId != userId))
+    @if (Model.Comments is not null)
     {
-        <div>
-    @{
-                var movieRating = Model.Ratings.FirstOrDefault(r => r.ApplicationUserId == comment.ApplicationUserId);
+        <div class="mt-4 d-flex flex-column" style="gap: 12px">
+            @foreach (var c in Model.Comments.Where(c => c.ApplicationUserId != userId))
+            {
+                var movieRating = Model.Ratings.FirstOrDefault(r => r.ApplicationUserId == c.ApplicationUserId);
+
+                <div class="card py-2 px-3">
+                    <div class="d-flex justify-content-between">
+                        <p><strong>@c.ApplicationUser.DisplayName</strong></p>
+
+                        @if (movieRating is not null)
+                        {
+                            <p>Score: <strong>@movieRating.Score</strong></p>
+                        }
+                        else
+                        {
+                            <p>Not yet rated</p>
+                        }
+                    </div>
+
+                    <p>@c.Content</p>
+                    <p class="fw-lighter fs-6">@c.CreatedAt</p>
+                </div>
             }
-            <p>@comment.ApplicationUser.DisplayName Score: @if (movieRating is not null)
-                {
-                    @movieRating.Score
-                }
-                else
-                {
-                    <span>Not
-                        yet reviewed</span>
-                }</p>
-            <p>@comment.Content</p>
         </div>
     }
-}
+    else
+    {
+        <p>Be the first to review this movie!</p>
+    }
+</div>

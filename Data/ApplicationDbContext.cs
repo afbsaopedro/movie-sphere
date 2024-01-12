@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MovieSphere.Models;
 using System.Reflection.Emit;
 using Microsoft.AspNetCore.Identity;
+using System.Text;
 
 namespace MovieSphere.Data
 {
@@ -70,10 +71,14 @@ namespace MovieSphere.Data
                 new Course { Id = 29, Name = "Renewable Energies and Environment", Tag = "REE", CourseTypeId = 4 }
                 );
 
+            string dev = "Developer";
+            string admn = "Admin";
+            string mnger = "Manager";
+
             modelBuilder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Id = "49379abf-f146-406b-9ef7-059723ba41a9", Name = "Developer" },
-                new IdentityRole { Name = "Admin" },
-                new IdentityRole { Name = "Manager" }
+                new IdentityRole { Id = "49379abf-f146-406b-9ef7-059723ba41a9", Name = dev, NormalizedName = dev.ToUpper() },
+                new IdentityRole { Name = admn, NormalizedName = admn.ToUpper() },
+                new IdentityRole { Name = mnger, NormalizedName = mnger.ToUpper() }
             );
 
             var pwdHasher = new PasswordHasher<ApplicationUser>();
@@ -97,6 +102,42 @@ namespace MovieSphere.Data
                     IsPrivate = true,
                     CourseId = 6,
                     EmailConfirmed = true
+                },
+                new ApplicationUser
+                {
+                    Id = "f8c79463-5df6-4736-a0ba-87218377f287",
+                    UserName = "leonor.caldeira@moviesphere.com",
+                    Email = "leonor.caldeira@moviesphere.com",
+                    NormalizedEmail = "leonor.caldeira@moviesphere.com".ToUpper(),
+                    NormalizedUserName = "leonor.caldeira@moviesphere.com".ToUpper(),
+                    PasswordHash = pwdHasher.HashPassword(null, "leonor"),
+                    DisplayName = "Leo-caldeira",
+                    CreationDate = DateTime.Now,
+                    FirstName = "Leonor",
+                    LastName = "Caldeira",
+                    DateOfBirth = new DateOnly(1991, 1, 2),
+                    PlaceOfOrigin = "Portalegre",
+                    Bio = "CTeSP TPSI! Brevemente Engenharia Informática!",
+                    IsPrivate = true,
+                    EmailConfirmed = true
+                },
+                new ApplicationUser
+                {
+                    Id = "8426038e-905e-4397-a95d-98a4a10b8231",
+                    UserName = "andre.saopedro@moviesphere.com",
+                    Email = "andre.saopedro@moviesphere.com",
+                    NormalizedEmail = "andre.saopedro@moviesphere.com".ToUpper(),
+                    NormalizedUserName = "andre.saopedro@moviesphere.com".ToUpper(),
+                    PasswordHash = pwdHasher.HashPassword(null, "andre"),
+                    DisplayName = "afbsaopedro",
+                    CreationDate = DateTime.Now,
+                    FirstName = "André",
+                    LastName = "São Pedro",
+                    DateOfBirth = new DateOnly(1996, 11, 30),
+                    PlaceOfOrigin = "Portalegre",
+                    Bio = "Movie Sphere",
+                    IsPrivate = true,
+                    EmailConfirmed = true
                 }
             );
 
@@ -107,6 +148,57 @@ namespace MovieSphere.Data
                     UserId = "2a5da078-3a9c-4636-a2d9-45014ccc5815"
                 }
             );
+
+            modelBuilder.Entity<Movie>().HasData(
+                new Movie
+                {
+                    Id = 1,
+                    ApiReference = 872585
+                },
+                new Movie
+                {
+                    Id = 2,
+                    ApiReference = 76600
+                },
+                new Movie
+                {
+                    Id = 3,
+                    ApiReference = 507089
+                }
+            );
+
+            modelBuilder.Entity<Rating>().HasData(
+                new Rating
+                {
+                    Id = 1,
+                    Score = 5,
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MovieId = 1,
+                    ApplicationUserId = "8426038e-905e-4397-a95d-98a4a10b8231"
+                }
+            );
+
+            modelBuilder.Entity<Comment>().HasData(
+                new Comment
+                {
+                    Id = 1,
+                    Content = "The best movie of 2023!",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MovieId = 1,
+                    ApplicationUserId = "8426038e-905e-4397-a95d-98a4a10b8231"
+                },
+                new Comment
+                {
+                    Id = 2,
+                    Content = "Não achei piada nenhuma. Nem sei que pontuação dar...",
+                    CreatedAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now,
+                    MovieId = 3,
+                    ApplicationUserId = "f8c79463-5df6-4736-a0ba-87218377f287"
+                }
+                );
 
             base.OnModelCreating(modelBuilder);
         }

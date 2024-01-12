@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieSphere.Data;
 
@@ -11,9 +12,11 @@ using MovieSphere.Data;
 namespace MovieSphere.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240112153029_UpdatedRoleSeed")]
+    partial class UpdatedRoleSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,13 +90,13 @@ namespace MovieSphere.Migrations
                         },
                         new
                         {
-                            Id = "b4a66743-0737-4884-8dfd-00b9cdf38b20",
+                            Id = "632a3b2b-6340-4d93-bad6-ab75183e3a41",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "65fe13df-a855-4a93-9103-77c4fb635ef3",
+                            Id = "71bf90b5-2c7d-442e-9f96-08055bd1586e",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         });
@@ -315,9 +318,9 @@ namespace MovieSphere.Migrations
                             Id = "2a5da078-3a9c-4636-a2d9-45014ccc5815",
                             AccessFailedCount = 0,
                             Bio = "Teacher @ ESTG.",
-                            ConcurrencyStamp = "ad8c0519-2fbc-4c05-82de-52e6ee070109",
+                            ConcurrencyStamp = "b4bf6f5b-176a-41db-bdf1-475f7942d2d8",
                             CourseId = 6,
-                            CreationDate = new DateTime(2024, 1, 12, 18, 38, 29, 368, DateTimeKind.Local).AddTicks(6591),
+                            CreationDate = new DateTime(2024, 1, 12, 15, 30, 27, 914, DateTimeKind.Local).AddTicks(829),
                             DateOfBirth = new DateOnly(1991, 1, 2),
                             DisplayName = "dolival",
                             Email = "d.olival@moviesphere.com",
@@ -328,60 +331,12 @@ namespace MovieSphere.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "D.OLIVAL@MOVIESPHERE.COM",
                             NormalizedUserName = "D.OLIVAL@MOVIESPHERE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAPFB8bPlMCM9q+XbTZ48X5RnHxlmY/DY6e5YOgAnoK2KB85scItg7P6qekaQcbjhQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDfOY9LQEG7705sxi5BvgQqZRaFcLFP5QHy+iPKM2caCAsQxFa7l+mgXSoyxjFTH1A==",
                             PhoneNumberConfirmed = false,
                             PlaceOfOrigin = "Madeira",
-                            SecurityStamp = "d3babf45-8b63-4c81-90bb-074b8ebf4558",
+                            SecurityStamp = "39f038f8-0bf5-4adc-bf78-2b3167bcee3a",
                             TwoFactorEnabled = false,
                             UserName = "d.olival@moviesphere.com"
-                        },
-                        new
-                        {
-                            Id = "f8c79463-5df6-4736-a0ba-87218377f287",
-                            AccessFailedCount = 0,
-                            Bio = "CTeSP TPSI! Brevemente Engenharia Informática!",
-                            ConcurrencyStamp = "efb3648e-b74f-4dca-9e6a-c223fb251ba9",
-                            CreationDate = new DateTime(2024, 1, 12, 18, 38, 29, 452, DateTimeKind.Local).AddTicks(3209),
-                            DateOfBirth = new DateOnly(1991, 1, 2),
-                            DisplayName = "Leo-caldeira",
-                            Email = "leonor.caldeira@moviesphere.com",
-                            EmailConfirmed = true,
-                            FirstName = "Leonor",
-                            IsPrivate = true,
-                            LastName = "Caldeira",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "LEONOR.CALDEIRA@MOVIESPHERE.COM",
-                            NormalizedUserName = "LEONOR.CALDEIRA@MOVIESPHERE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEF2XBukypgQtIELLlEdw0gQXvucXq4gvNZg9GzM8m2rh3eiPadAbkSFun+VSsHG7yw==",
-                            PhoneNumberConfirmed = false,
-                            PlaceOfOrigin = "Portalegre",
-                            SecurityStamp = "c0e53373-b120-4309-aae8-2c1ab4853bf6",
-                            TwoFactorEnabled = false,
-                            UserName = "leonor.caldeira@moviesphere.com"
-                        },
-                        new
-                        {
-                            Id = "8426038e-905e-4397-a95d-98a4a10b8231",
-                            AccessFailedCount = 0,
-                            Bio = "Movie Sphere",
-                            ConcurrencyStamp = "fc3a724e-409d-4e28-a2f5-9699ec472875",
-                            CreationDate = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(4033),
-                            DateOfBirth = new DateOnly(1996, 11, 30),
-                            DisplayName = "afbsaopedro",
-                            Email = "andre.saopedro@moviesphere.com",
-                            EmailConfirmed = true,
-                            FirstName = "André",
-                            IsPrivate = true,
-                            LastName = "São Pedro",
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ANDRE.SAOPEDRO@MOVIESPHERE.COM",
-                            NormalizedUserName = "ANDRE.SAOPEDRO@MOVIESPHERE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECgrkOef9NFkREeJEY8fEIZSp87fvAOydBmAYmf9oabOmJa2QS/95PYyArHsu11OPw==",
-                            PhoneNumberConfirmed = false,
-                            PlaceOfOrigin = "Portalegre",
-                            SecurityStamp = "595d85e1-4d45-413d-bdf7-4e1b839250d7",
-                            TwoFactorEnabled = false,
-                            UserName = "andre.saopedro@moviesphere.com"
                         });
                 });
 
@@ -401,14 +356,11 @@ namespace MovieSphere.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -417,26 +369,6 @@ namespace MovieSphere.Migrations
                     b.HasIndex("MovieId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ApplicationUserId = "8426038e-905e-4397-a95d-98a4a10b8231",
-                            Content = "The best movie of 2023!",
-                            CreatedAt = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(5134),
-                            MovieId = 1,
-                            UpdatedAt = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(5135)
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ApplicationUserId = "f8c79463-5df6-4736-a0ba-87218377f287",
-                            Content = "Não achei piada nenhuma. Nem sei que pontuação dar...",
-                            CreatedAt = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(5153),
-                            MovieId = 3,
-                            UpdatedAt = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(5155)
-                        });
                 });
 
             modelBuilder.Entity("MovieSphere.Models.Course", b =>
@@ -723,23 +655,6 @@ namespace MovieSphere.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movies");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ApiReference = 872585
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ApiReference = 76600
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ApiReference = 507089
-                        });
                 });
 
             modelBuilder.Entity("MovieSphere.Models.Rating", b =>
@@ -754,17 +669,11 @@ namespace MovieSphere.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
                     b.Property<int>("Score")
                         .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -773,17 +682,6 @@ namespace MovieSphere.Migrations
                     b.HasIndex("MovieId");
 
                     b.ToTable("Ratings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ApplicationUserId = "8426038e-905e-4397-a95d-98a4a10b8231",
-                            CreatedAt = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(4842),
-                            MovieId = 1,
-                            Score = 5,
-                            UpdatedAt = new DateTime(2024, 1, 12, 18, 38, 29, 536, DateTimeKind.Local).AddTicks(4843)
-                        });
                 });
 
             modelBuilder.Entity("ApplicationUserMovie", b =>

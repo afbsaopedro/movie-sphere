@@ -48,7 +48,7 @@ namespace MovieSphere.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Feed", "Home");
                     }
                 }
                 TempData["Error"] = "Wrong credentials. Please, try again.";
@@ -57,11 +57,6 @@ namespace MovieSphere.Controllers
             TempData["Error"] = "Wrong credentials. Please, try again.";
             return View(login);
         }
-
-
-
-
-
 
         public IActionResult Register()
         {
@@ -98,7 +93,17 @@ namespace MovieSphere.Controllers
 
             var newUserResponse = await _userManager.CreateAsync(newUser, register.Password);
 
-            if (newUserResponse.Succeeded) return RedirectToAction("Index", "Home");
+            if (newUserResponse.Succeeded)
+            {
+                var result = await _signInManager.PasswordSignInAsync(newUser, register.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Feed", "Home");
+                }
+
+                return RedirectToAction("Login", "Account");
+            };
 
             return RedirectToAction("Register", "Account");
         }

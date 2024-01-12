@@ -14,40 +14,47 @@
     <link rel="stylesheet" href="~/MovieSphere.styles.css" asp-append-version="true" />
 </head>
 
-<body>
+<body data-bs-theme="dark">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Movie Sphere</a>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Feed">Movie Sphere</a>
+                }
+                else
+                {
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Movie Sphere</a>
+                }
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Movie" asp-action="Popular">Movies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-action="Feed" asp-controller="Home">Feed</a>
+                        </li>
                         @if (User.Identity.IsAuthenticated && (User.IsInRole("Admin") || User.IsInRole("Developer")))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Course"
-                                   asp-action="Index">Courses</a>
+                                <a class="nav-link" asp-area="" asp-controller="Course" asp-action="Index">Courses</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="CourseType"
-                                   asp-action="Index">Course Types</a>
+                                <a class="nav-link" asp-area="" asp-controller="CourseType" asp-action="Index">Course
+                                    Types</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">User
+                                <a class="nav-link" asp-area="" asp-controller="Role" asp-action="Index">User
                                     Roles</a>
                             </li>
                         }
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie"
-                               asp-action="Popular">Movies</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-action="Feed" asp-controller="Home">Feed</a>
-                        </li>
+
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

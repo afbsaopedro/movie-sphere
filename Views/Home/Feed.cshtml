@@ -1,10 +1,61 @@
-﻿@{
+﻿@model MovieSphere.Dto.Feed
+@using MovieSphere.Dto;
+@{
     ViewData["Title"] = "Feed";
 }
 
-<h1>Feed - What peers are saying</h1>
+<div class="container mt-4" style="max-width: 650px">
+    @if (Model.Items is not null && Model.Items.Count() > 0)
+    {
+        <div class="mt-4 d-flex flex-column" style="gap: 12px">
+            @foreach (var i in Model.Items)
+            {
+                var posterImage = "https://image.tmdb.org/t/p/original" + i.Movie.PosterImage;
 
+                switch (i.Type)
+                {
+                    case FeedItemType.Rating:
+                        <div class="py-2 px-3 d-flex rounded border border-1" style="gap: 12px">
+                            <a style="max-width: 150px" asp-controller="Movie" asp-action="Details" asp-route-id="@i.Movie.Id"
+                                style="text-decoration: none;">
+                                <p class="text-truncate">@i.Movie.Title</p>
 
+                                <img width="100%" src="@posterImage" />
+                            </a>
 
+                            <div class="flex-fill d-flex flex-column">
+                                <p class="flex-fill">
+                                    <strong>@i.User.DisplayName</strong>
+                                    gave a rating of @i.Value
+                                </p>
 
+                                <p class="fw-lighter fs-6">@i.CreatedAt</p>
+                            </div>
+                        </div>
+                        break;
+                    case FeedItemType.Review:
+                        <div class="py-2 px-3 d-flex rounded border border-1" style="gap: 12px">
+                            <a style="max-width: 150px" asp-controller="Movie" asp-action="Details" asp-route-id="@i.Movie.Id"
+                                style="text-decoration: none;">
+                                <p class="text-truncate">@i.Movie.Title</p>
 
+                                <img width="100%" src="@posterImage" />
+                            </a>
+
+                            <div class="flex-fill d-flex flex-column">
+                                <p>
+                                    <strong>@i.User.DisplayName</strong>
+                                    reviewed
+                                </p>
+
+                                <p class="flex-fill">@i.Value</p>
+
+                                <p class="fw-lighter fs-6">@i.CreatedAt</p>
+                            </div>
+                        </div>
+                        break;
+                }
+            }
+        </div>
+    }
+</div>

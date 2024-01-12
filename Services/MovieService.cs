@@ -20,24 +20,18 @@ namespace MovieSphere.Services
 
         public async Task<MoviesResponse> FindMovie(string query, int page)
         {
-            var request = await _httpClient.GetAsync($"search/movie?api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f&query={query}&include_adult=false&language=en-US&page={page}&");
-
-            var content = await request.Content.ReadAsStringAsync();
-
-            var response = JsonSerializer.Deserialize<MoviesResponse>(content);
+            var response = await _httpClient.GetFromJsonAsync<MoviesResponse>($"search/movie?api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f&query={query}&include_adult=false&language=en-US&page={page}&");
 
             return response;
         }
 
         public async Task<Dto.Movie> GetMovieById(int id)
         {
-            var request = await _httpClient.GetAsync($"movie/{id}?language=en-US&api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f");
-
-            var content = await request.Content.ReadAsStringAsync();
-
-            var response = JsonSerializer.Deserialize<Dto.Movie>(content);
+            var response = await _httpClient.GetFromJsonAsync<Dto.Movie>($"movie/{id}?language=en-US&api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f");
 
             var movie = await _applicationDbContext.Movies
+                .Include(m => m.UsersWhoFavourited)
+                .Include(m => m.UsersInWatchlist)
                 .Include(m => m.Comments)
                 .ThenInclude(c => c.ApplicationUser)
                 .Include(m => m.Ratings)
@@ -59,18 +53,21 @@ namespace MovieSphere.Services
             {
                 response.Ratings = movie.Ratings;
             }
+            if (movie.UsersWhoFavourited is not null)
+            {
+                response.UsersWhoFavourited = movie.UsersWhoFavourited;
+            }
+            if (movie.UsersInWatchlist is not null)
+            {
+                response.UsersInWatchlist = movie.UsersInWatchlist;
+            }
 
             return response;
         }
 
         public async Task<MoviesResponse> PopularMovies(int page)
         {
-
-            var request = await _httpClient.GetAsync($"movie/popular?api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f&language=en-US&page={page}");
-
-            var content = await request.Content.ReadAsStringAsync();
-
-            var response = JsonSerializer.Deserialize<MoviesResponse>(content);
+            var response = await _httpClient.GetFromJsonAsync<MoviesResponse>($"movie/popular?api_key=78e79bb8d580d1c4f9fd02f5d3ebe37f&language=en-US&page={page}");
 
             return response;
         }
