@@ -33,6 +33,12 @@ else
 {
     app.UseExceptionHandler("/Home/Error");
 }
+
+var scope = app.Services.CreateScope();
+var ctx = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+ctx.Database.EnsureCreated();
+
 app.UseStaticFiles();
 
 app.UseRouting();

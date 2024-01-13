@@ -21,7 +21,6 @@ namespace MovieSphere.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<ApplicationUser>()
                 .HasMany(u => u.FavouriteMovies)
                 .WithMany(m => m.UsersWhoFavourited)
